@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Chakra Petch", sans-serif;
+}
+
+:root {
+  --rtc-color-100: #FFFFFF;
+  --rtc-color-200: #e0ffff;
+  --rtc-color-300: #e0e0e0;
+  --rtc-color-400: #007BFF;
+  --rtc-color-500: #ff5a36;
+  --rtc-color-600: #FF0000;
+  --rtc-color-700: #424242;
+  --rtc-color-800: #2a2a2a;
+  --rtc-color-900: #1B1B1B;
+  --rtc-color-1000: #111010;
+
+  /* BACKGROUND */
+  --rtc-bg-primary: var(--rtc-color-900);
+  --rtc-bg-secondary: var(--rtc-color-700);
+  --rtc-bg-tertiary: var(--rtc-color-600);
+  --rtc-bg-fourth: var(--rtc-color-500);
+  --rtc-bg-fifth: var(--rtc-color-300);
+
+  /* TEXT */
+  --rtc-text-primary: var(--rtc-color-100);
+  --rtc-text-secondary: var(--rtc-color-200);
+  --rtc-text-tertiary: var(--rtc-color-1000);
+  --rtc-text-hover-primary: var(--rtc-color-500);
+  --rtc-text-hover-seconadry: var(--rtc-color-400);
+
+  /* SPACINGS */
+  --rtc-margin-xs: 10px;
+  --rtc-margin-s: 20px;
+  --rtc-margin-m: 30px;
+  --rtc-margin-l: 40px;
+  --rtc-margin-xl: 50px;
+  --rtc-margin-xxl: 60px;
+
+  --rtc-padding-xs: 10px;
+  --rtc-padding-s: 20px;
+  --rtc-padding-m: 30px;
+  --rtc-padding-l: 40px;
+  --rtc-padding-xl: 50px;
+  --rtc-padding-xxl: 60px;
+
+  --rtc-gap-xs: 10px;
+  --rtc-gap-s: 20px;
+  --rtc-gap-m: 30px;
+  --rtc-gap-l: 40px;
+  --rtc-gap-xl: 50px;
+  --rtc-gap-xxl: 60px;
+
+
+  /* BORDER-RADIUS */
+  --rtc-br-primary: 10px;
+  --rtc-br-secondary: 5px
+
+}
+
+a, h1, h2, h3, h4, h5, h6, p, label, div {
+  color: var(--rtc-text-primary);
+}

@@ -1,0 +1,13 @@
+.cortinilla {
+    width: 0px;
+    transition: all 0.5s;
+    position: absolute;
+    z-index: 500;
+    height: 100svh;
+    right: 0;
+    top: 0;
+}
+
+.cortinilla.open {
+    width: 100%;
+}

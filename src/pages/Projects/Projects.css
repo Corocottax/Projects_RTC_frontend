@@ -1,0 +1,9 @@
+#projects {
+    background-color: var(--rtc-bg-fifth);
+    color: var(--rtc-text-tertiary);
+    min-height: 100svh;
+}
+
+#projects * {
+    color: var(--rtc-text-tertiary);
+}

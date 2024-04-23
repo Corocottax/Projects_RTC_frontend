@@ -1,0 +1,93 @@
+.best_project_wrp {
+    height: 240px;
+}
+
+.best_project {
+    width: 300px;
+    height: 200px;
+    border-radius: var(--rtc-br-primary);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+.best_project > .img_wrp {
+    width: 100%;
+    height: 100%;
+}
+
+.best_project > .img_wrp > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s;
+} 
+
+.best_project > .info {
+    height: 0px;
+    overflow: hidden;
+    transition: all 0.5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.51);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--rtc-gap-s);
+    width: 100%;
+}
+
+.best_project > .info > h2 {
+    color: var(--rtc-text-tertiary);
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.best_project:hover {
+    border-radius: var(--rtc-br-primary) var(--rtc-br-primary) 0px 0px;
+}
+
+.best_project:hover > .info {
+    height: 100%;
+}
+
+.best_project:hover > .img_wrp > img {
+    filter: blur(2px);
+}
+
+.best_project > .info > div {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    gap: var(--rtc-gap-s);
+    align-items: center;
+    justify-content: center;
+}
+
+.best_project > .info > div > div {
+    width: 50px;
+    height: 50px;
+}
+
+.best_project > .info > div > div:hover ~ h3 {
+    width: 200px;
+    padding: 4px 7px;
+}
+
+.best_project > .info > div > h3 {
+    width: 0px;
+    overflow: hidden;
+    color: var(--rtc-text-tertiary);
+    transition: all 0.5s;
+}
+
+.best_project > .info > div > div > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

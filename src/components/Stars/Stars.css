@@ -1,0 +1,26 @@
+.stars {
+    display: flex;
+    gap: var(--rtc-gap-s);
+    align-items: center;
+    justify-content: center;
+    background-color: var(--rtc-bg-fifth);
+    width: 100%;
+    margin: auto;
+    border-radius: 0px 0px 20px 20px;
+    height: 0px;
+    transition: all 0.5s;
+    overflow: hidden;
+}
+
+.star {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    /* color: rgb(27, 27, 27); */
+}
+
+.best_project:hover ~ .stars {
+   height: 30px;
+   padding: var(--rtc-padding-xs);
+}
