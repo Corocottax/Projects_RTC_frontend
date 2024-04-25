@@ -1,0 +1,43 @@
+#best_projects {
+    width: 100%;
+    margin: auto;
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#best_projects > h2 {
+    opacity: 0;
+}
+
+
+#best_projects>ul {
+    display: flex;
+    padding: var(--rtc-padding-m);
+    align-items: center;
+    justify-content: center;
+    gap: var(--rtc-gap-l);
+    flex-wrap: wrap;
+    opacity: 0;
+}
+
+.project_placeholder {
+    width: 300px;
+    height: 200px;
+    border-radius: var(--rtc-br-primary);
+    animation: project_placeholder_animation 1.5s infinite;
+}
+
+@keyframes project_placeholder_animation {
+    0% {
+        background-color: #686868;
+    } 
+    50% {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        background-color: #686868;
+    }
+}
