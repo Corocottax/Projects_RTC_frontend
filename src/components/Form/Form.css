@@ -1,0 +1,49 @@
+.common-form {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--rtc-br-primary);
+    background-color: var(--rtc-bg-fifth);
+    padding: var(--rtc-padding-l);
+    gap: var(--rtc-gap-m);
+    justify-content: center;
+    align-items: center;
+}
+
+.common-form > button {
+    border-radius: var(--rtc-br-primary);
+    padding: var(--rtc-padding-xs) var(--rtc-padding-s);
+    cursor: pointer;
+    background-color: var(--rtc-bg-secondary);
+    color: var(--rtc-text-primary);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.5s;
+}
+
+.common-form label {
+    color: var(--rtc-text-tertiary);
+}
+
+.common-form.scheme-dark {
+    background-color: var(--rtc-bg-secondary);
+    color: var(--rtc-text-primary);
+}
+
+.common-form.scheme-dark > button {
+    background-color: var(--rtc-bg-fifth);
+    color: var(--rtc-text-tertiary);
+}
+
+.common-form.scheme-dark label {
+    color: var(--rtc-text-primary);
+}
+
+
+.common-form > button:hover {
+    background-color: var(--rtc-color-900);
+}
+
+.common-form.scheme-dark > button:hover {
+    background-color: var(--rtc-color-100);
+}

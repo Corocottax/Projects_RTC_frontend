@@ -1,0 +1,30 @@
+.user-zone {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 999999;
+    top: 10px;
+    right: 10px;
+}
+
+.user-zone:hover {
+    animation: move-user-zone 0.2s forwards linear;
+}
+
+@keyframes move-user-zone {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

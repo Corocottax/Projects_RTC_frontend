@@ -1,19 +1,21 @@
 export const API = async ({
-  CT = "application/json",
   endpoint,
   method = "GET",
-  url
+  url,
+  body
 }) => {
   const headers = {
     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    "Content-Type": CT,
+    "Content-Type": "application/json"
   };
 
   const urlFetch = url ? url : import.meta.env.VITE_BASE_URL + endpoint;
+  const bodyFetch = JSON.stringify(body);
 
   const res = await fetch(urlFetch, {
     method,
     headers,
+    body: bodyFetch
   });
 
   const response = await res.json();

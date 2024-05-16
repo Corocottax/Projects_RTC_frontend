@@ -2,8 +2,8 @@ import { API } from "../../API/API";
 
 export const getBestProjects = async (dispatch) => {
   const response = (
-    await API({ endpoint: "/projects" })
-  )?.response?.projects?.slice(0, 3);
+    await API({ endpoint: "/projects/bestprojects" })
+  )?.response;
 
   dispatch({ type: "GET_BEST_PROJECTS", payload: response });
 };

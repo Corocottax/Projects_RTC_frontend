@@ -1,0 +1,8 @@
+#login {
+    min-height: 100svh;
+    background: linear-gradient(90deg, var(--rtc-bg-primary) 0%, var(--rtc-bg-secondary) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
