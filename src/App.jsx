@@ -6,6 +6,7 @@ import Project from "./pages/Project/Project";
 import Login from "./pages/Login/Login";
 import { useContext } from "react";
 import { UsersContext } from "./providers/UsersProvider";
+import Profile from "./pages/Profile/Profile";
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<Project />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </main>

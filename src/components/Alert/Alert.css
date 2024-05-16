@@ -1,0 +1,41 @@
+.alert {
+    position: absolute;
+    z-index: 9999;
+    top: 0px;
+    left: 0px;
+    border-radius: 0px 0px var(--rtc-br-primary) 0px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: var(--rtc-padding-m);
+    overflow: hidden;
+    max-width: 300px;
+    animation: show-alert 0.2s forwards linear;
+    text-align: center;
+}
+
+.alert.success {
+    background-color: rgb(61, 226, 61);
+    color: var(--rtc-text-tertiary);
+}
+
+.alert.error {
+    background-color: rgb(255, 85, 85);
+    color: var(--rtc-text-tertiary);
+}
+
+.alert.info {
+    background-color: rgb(92, 92, 255);
+    color: var(--rtc-text-primary);
+}
+
+@keyframes show-alert {
+    0% {
+        transform: translateX(-300px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes hide-alert {}

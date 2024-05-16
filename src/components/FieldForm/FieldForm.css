@@ -22,3 +22,16 @@
     border-bottom: var(--rtc-color-100) 2px solid;
     color: var(--rtc-color-100);
 }
+
+.scheme-dark .field-form input:-webkit-autofill,
+.scheme-dark .field-form input:-webkit-autofill:hover,
+.scheme-dark .field-form input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px var(--rtc-bg-secondary) inset;
+    -webkit-text-fill-color: var(--rtc-text-primary);
+}
+
+.field-form input:-webkit-autofill,
+.field-form input:-webkit-autofill:hover,
+.field-form input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px var(--rtc-bg-fifth) inset;
+}

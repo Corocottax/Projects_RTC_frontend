@@ -4,13 +4,16 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import ProjectsProvider from "./providers/ProjectsProvider.jsx";
 import UsersProvider from "./providers/UsersProvider.jsx";
+import AlertProvider from "./providers/AlertProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <UsersProvider>
-      <ProjectsProvider>
-        <App />
-      </ProjectsProvider>
-    </UsersProvider>
+    <AlertProvider>
+      <UsersProvider>
+        <ProjectsProvider>
+          <App />
+        </ProjectsProvider>
+      </UsersProvider>
+    </AlertProvider>
   </BrowserRouter>
 );
