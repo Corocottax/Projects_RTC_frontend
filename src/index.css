@@ -67,3 +67,25 @@
 a, h1, h2, h3, h4, h5, h6, p, label, div {
   color: var(--rtc-text-primary);
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--rtc-color-400);
+  border-radius: var(--rtc-br-primary);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rtc-color-700);
+  cursor: pointer;
+}

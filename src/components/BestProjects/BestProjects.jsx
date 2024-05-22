@@ -10,15 +10,15 @@ const BestProjects = () => {
   const { best_projects } = state;
 
   useEffect(() => {
-    setTimeout(() => {
-      best_projects.length === 0 && getBestProjects(dispatch);
-    }, 10000);
+    best_projects.length === 0 && getBestProjects(dispatch);
   }, []);
 
   const printPlaceholders = () => {
     const arrayPlaceholders = [];
     for (let i = 0; i < 3; i++) {
-      arrayPlaceholders.push(<div key={i} className="project_placeholder"></div>);
+      arrayPlaceholders.push(
+        <div key={i} className="project_placeholder"></div>
+      );
     }
     return arrayPlaceholders;
   };

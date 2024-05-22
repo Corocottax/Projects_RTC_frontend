@@ -1,9 +1,8 @@
 import { API } from "../../API/API";
 
 export const getBestProjects = async (dispatch) => {
-  const response = (
-    await API({ endpoint: "/projects/bestprojects" })
-  )?.response;
+  const response = (await API({ endpoint: "/projects/bestprojects" }))
+    ?.response;
 
   dispatch({ type: "GET_BEST_PROJECTS", payload: response });
 };
@@ -23,15 +22,31 @@ export const getProjects = async (dispatch) => {
   });
 };
 
-export const changePage = async (dispatch, url) => {
+export const changePage = async (
+  dispatch,
+  url,
+  cachedProjects,
+  currentPage
+) => {
   if (!url) {
     return;
   }
 
-  const { projects, info } = (await API({ url })).response;
+  const cachedProject = cachedProjects.find(
+    (element) => element.info.currentPage === currentPage
+  );
 
-  dispatch({
-    type: "GET_PROJECTS",
-    payload: { projects, info },
-  });
+  if (cachedProject) {
+    dispatch({
+      type: "GET_PREVIOUS_PROJECTS",
+      payload: cachedProject.info,
+    });
+  } else {
+    const { projects, info } = (await API({ url })).response;
+
+    dispatch({
+      type: "GET_PROJECTS",
+      payload: { projects, info },
+    });
+  }
 };

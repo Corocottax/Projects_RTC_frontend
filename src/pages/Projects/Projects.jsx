@@ -12,7 +12,7 @@ import {
 const Projects = () => {
   const { openned, transition } = useChangePage({ path: "/" });
   const { state, dispatch } = useContext(ProjectsContext);
-  const { projects, info } = state;
+  const { cachedProjects, info } = state;
 
   useEffect(() => {
     getProjects(dispatch);
@@ -22,43 +22,65 @@ const Projects = () => {
     <div id="projects">
       <Cortinilla openned={openned} mode="dark" position="left" />
       <Arrow funct={transition} position="left" mode="dark" />
-      <div
-        style={{
-          display: "flex",
-          gap: "20px",
-          justifyContent: "center",
-          alignItems: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        {projects.map((project) => {
+      <div className="projects">
+        {cachedProjects[info?.currentPage - 1]?.projects.map((project) => {
           return (
-            <div key={project._id}>
+            <div key={project._id} className="project">
               <h3>{project.title}</h3>
-              <img
-                style={{ width: "200px", height: "150px" }}
-                src={project.imgs[0]}
-              />
+              <div className="img_wrp">
+                <img src={project.imgs[0]} alt={project.title} />
+              </div>
+              <p className="description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam
+                voluptates sit, quasi dolorem quidem ad deserunt numquam
+                deleniti. Nostrum facilis porro corrupti quam? Error explicabo
+                magni dolorum? Magni, odio facilis?Lorem ipsum dolor, sit amet
+                consectetur adipisicing elit. Quam voluptates sit, quasi dolorem
+                quidem ad deserunt numquam deleniti. Nostrum facilis porro
+                corrupti quam? Error explicabo magni dolorum? Magni, odio
+                facilis?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam
+                voluptates sit, quasi dolorem quidem ad deserunt numquam
+                deleniti. Nostrum facilis porro corrupti quam? Error explicabo
+                magni dolorum? Magni, odio facilis?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam
+                voluptates sit, quasi dolorem quidem ad deserunt numquam
+                deleniti. Nostrum facilis porro corrupti quam? Error explicabo
+                magni dolorum? Magni, odio facilis?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam
+                voluptates sit, quasi dolorem quidem ad deserunt numquam
+                deleniti. Nostrum facilis porro corrupti quam? Error explicabo
+                magni dolorum? Magni, odio facilis?
+              </p>
             </div>
           );
         })}
       </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: "50px",
-          gap: "20px",
-        }}
-      >
-        <button onClick={() => changePage(dispatch, info?.prev)}>
+      <div className="change-page">
+        <button
+          onClick={() =>
+            changePage(
+              dispatch,
+              info?.prev,
+              cachedProjects,
+              info?.currentPage - 1
+            )
+          }
+        >
           Previous
         </button>
         <h3>
           {info?.currentPage} / {info?.pages}
         </h3>
-        <button onClick={() => changePage(dispatch, info?.next)}>Next</button>
+        <button
+          onClick={() =>
+            changePage(
+              dispatch,
+              info?.next,
+              cachedProjects,
+              info?.currentPage + 1
+            )
+          }
+        >
+          Next
+        </button>
       </div>
     </div>
   );
