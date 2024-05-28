@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import "./Project.css";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProjectsContext } from "../../providers/ProjectsProvider";
 import { getProject } from "../../reducers/projects/projects.actions";
+import Carousel from "../../components/Carousel/Carousel";
 
 const Project = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const Project = () => {
 
   return (
     <div style={{ color: "black" }}>
-      {project && project.title}
+      {project && <Carousel imgs={project.imgs} />}
     </div>
   );
 };
