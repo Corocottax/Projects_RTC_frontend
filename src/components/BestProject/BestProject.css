@@ -13,18 +13,6 @@
     transition: all 0.5s;
 }
 
-.best_project > .img_wrp {
-    width: 100%;
-    height: 100%;
-}
-
-.best_project > .img_wrp > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.5s;
-} 
-
 .best_project > .info {
     height: 0px;
     overflow: hidden;
@@ -46,6 +34,7 @@
     color: var(--rtc-text-tertiary);
     text-transform: uppercase;
     font-weight: 800;
+    text-align: center;
 }
 
 .best_project:hover {

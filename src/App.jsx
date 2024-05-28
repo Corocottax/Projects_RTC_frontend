@@ -4,23 +4,12 @@ import Home from "./pages/Home/Home";
 import Projects from "./pages/Projects/Projects";
 import Project from "./pages/Project/Project";
 import Login from "./pages/Login/Login";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { UsersContext } from "./providers/UsersProvider";
 import Profile from "./pages/Profile/Profile";
 
 const App = () => {
   const { state } = useContext(UsersContext);
-
-  const [imgs, setImgs] = useState([]);
-
-  useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character")
-      .then((res) => res.json())
-      .then((res) => setImgs([...imgs, ...res.results.map((e) => e.image)]));
-    fetch("https://rickandmortyapi.com/api/character/?page=2")
-      .then((res) => res.json())
-      .then((res) => setImgs([...imgs, ...res.results.map((e) => e.image)]));
-  }, []);
 
   return (
     <main>

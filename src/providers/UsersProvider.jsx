@@ -11,7 +11,7 @@ const UsersProvider = ({ children }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-        checksession(dispatch, navigate);
+      checksession(dispatch, navigate);
     }
   }, []);
 

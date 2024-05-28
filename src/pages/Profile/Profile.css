@@ -1,0 +1,25 @@
+#profile {
+    background-color: var(--rtc-bg-secondary);
+    min-height: 100svh;
+    padding: var(--rtc-padding-m);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--rtc-gap-s);
+}
+
+#profile > button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#profile > .projects {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--rtc-gap-s);
+    margin-top: var(--rtc-margin-l);
+}

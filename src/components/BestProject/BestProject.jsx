@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Stars from "../Stars/Stars";
 import "./BestProject.css";
 import { motion } from "framer-motion";
+import ImgWrp from "../ImgWrp/ImgWrp";
 
 const BestProject = ({ project }) => {
   return (
@@ -24,12 +25,12 @@ const BestProject = ({ project }) => {
               <h3>{project.name_user}</h3>
             </div>
           </div>
-          <div className="img_wrp">
+          <ImgWrp w="100%" h="100%">
             <img
               src={project.imgs[0]}
               alt={`proyecto ${project.title} de ${project.name_user}`}
             />
-          </div>
+          </ImgWrp>
         </div>
         <Stars averageRating={project.average_rating} />
       </motion.div>
