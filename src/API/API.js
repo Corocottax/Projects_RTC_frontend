@@ -10,7 +10,7 @@ export const API = async ({
   };
 
   const urlFetch = url ? url : import.meta.env.VITE_BASE_URL + endpoint;
-  const bodyFetch = JSON.stringify(body);
+  const bodyFetch = JSON.stringify(body); 
 
   const res = await fetch(urlFetch, {
     method,
