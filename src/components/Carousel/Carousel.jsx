@@ -1,11 +1,11 @@
 import { useCarousel } from "../../utils/customHooks/useCarousel";
 import "./Carousel.css";
 
-const Carousel = ({ imgs = [] }) => {
+const Carousel = ({ imgs = [], w, h }) => {
   const { move, animate, showCarousel } = useCarousel(imgs);
 
   return (
-    <div className="carousel">
+    <div className="carousel" style={{ width: w, height: h }}>
       {imgs.map((img, index) => {
         return (
           <div
@@ -16,11 +16,11 @@ const Carousel = ({ imgs = [] }) => {
               transform: `rotate(${
                 index % 2 === 0 ? index * 4.234 : index * -4.234
               }deg)`,
+              width: w,
+              height: h,
             }}
             onClick={() => move(index)}
           >
-            {console.log(showCarousel)}
-            {console.log(showCarousel[index])}
             <img src={img} />
           </div>
         );

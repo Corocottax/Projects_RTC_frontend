@@ -1,13 +1,8 @@
 .carousel {
     position: relative;
-    margin: 300px;
-    width: 350px;
-    height: 350px;
 }
 
 .carousel>div {
-    width: 300px;
-    height: 300px;
     padding: var(--rtc-padding-xs);
     background-color: var(--rtc-color-100);
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
@@ -17,7 +12,7 @@
 }
 
 .carousel>div.animate {
-    animation: moveRight 0.3s linear forwards, moveLeft 0.3s 0.3s linear forwards;
+    animation: moveRight 0.2s linear forwards, moveLeft 0.2s 0.2s linear forwards;
 }
 
 .carousel>div>img {
@@ -32,13 +27,13 @@
     }
 
     100% {
-        margin-left: 320px;
+        margin-left: 220px;
     }
 }
 
 @keyframes moveLeft {
     0% {
-        margin-left: 320px;
+        margin-left: 220px;
     }
 
     100% {

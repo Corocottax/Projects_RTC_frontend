@@ -1,9 +1,12 @@
 import { useParams } from "react-router-dom";
 import "./Project.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ProjectsContext } from "../../providers/ProjectsProvider";
 import { getProject } from "../../reducers/projects/projects.actions";
 import Carousel from "../../components/Carousel/Carousel";
+import ImgWrp from "../../components/ImgWrp/ImgWrp";
+import Stars from "../../components/Stars/Stars";
+import { API } from "../../API/API";
 
 const Project = () => {
   const { id } = useParams();
@@ -14,9 +17,54 @@ const Project = () => {
     getProject(dispatch, id);
   }, []);
 
+  const comment = useRef();
+
+  const submit = () => {
+    API({
+      endpoint: `/comments?idProject=${project._id}`,
+      method: "POST",
+      body: { text: comment.current.value },
+    });
+  };
+
   return (
-    <div style={{ color: "black" }}>
-      {project && <Carousel imgs={project.imgs} />}
+    <div id="page_project">
+      <div className="info_user_project">
+        <ImgWrp w="100px" h="100px" borderRadius="100%">
+          <img
+            src={project?.user.avatar}
+            alt={`perfil del usuario ${project?.user.name}`}
+          />
+        </ImgWrp>
+        <h2>
+          {project?.user.name} {project?.user.lastName}
+        </h2>
+      </div>
+      <div>
+        <div className="info_project">
+          {project && <Carousel imgs={project.imgs} w="250px" h="250px" />}
+          <h3>{project?.title}</h3>
+          <p>
+            {project?.description}
+          </p>
+          <Stars averageRating={project?.averageRating} visible />
+        </div>
+        <div className="comments">
+          <div>
+            {project?.comments.reverse().map((comment) => {
+              return (
+                <div>
+                  <p>{comment.text}</p>
+                </div>
+              );
+            })}
+          </div>
+          <div className="send_message">
+            <textarea placeholder="Escribe aquí tu comentario" ref={comment} />
+            <button onClick={submit}>Enviar</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

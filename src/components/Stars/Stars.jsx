@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import "./Stars.css";
 
-const Stars = ({ averageRating }) => {
+const Stars = ({ averageRating, visible }) => {
   const printStars = useCallback(() => {
     const arrayStars = [];
     for (let i = 0; i < 5; i++) {
@@ -25,7 +25,11 @@ const Stars = ({ averageRating }) => {
     return arrayStars;
   }, []);
 
-  return <div className="stars">{printStars()}</div>;
+  return (
+    <div className="stars" style={{ height: visible ? "30px" : "0px" }}>
+      {printStars()}
+    </div>
+  );
 };
 
 export default Stars;

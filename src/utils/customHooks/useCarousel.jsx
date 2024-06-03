@@ -15,7 +15,7 @@ export const useCarousel = (imgs = []) => {
           n === showCarousel.length - 1 ? n + 1 - showCarousel.length : n + 1
         )
       );
-    }, 300);
+    }, 200);
   };
 
   return { move, showCarousel, animate };

@@ -6,8 +6,6 @@
     background-color: var(--rtc-bg-fifth);
     width: 100%;
     margin: auto;
-    border-radius: 0px 0px 20px 20px;
-    height: 0px;
     transition: all 0.5s;
     overflow: hidden;
 }
@@ -19,6 +17,7 @@
 }
 
 .best_project:hover ~ .stars {
-   height: 30px;
-   padding: var(--rtc-padding-xs);
+    height: 30px;
+    padding: var(--rtc-padding-xs);
+    border-radius: 0px 0px 20px 20px;
 }
