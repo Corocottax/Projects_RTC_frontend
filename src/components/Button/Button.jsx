@@ -6,11 +6,14 @@ const Button = ({
   children,
   mode = "light",
   size = "m",
+  border = false,
 }) => {
   return (
     <button
       onClick={onClick}
-      className={`main_button ${className} ${mode} ${size}`}
+      className={`main_button ${className} ${mode} ${size} ${
+        border ? "border" : ""
+      }`}
     >
       {children}
     </button>

@@ -34,3 +34,11 @@
 .main_button.dark:hover {
     background-color: var(--rtc-color-100);
 }
+
+.main_button.dark.border {
+    border: 2px solid var(--rtc-bg-secondary);
+}
+
+.main_button.border {
+    border: 2px solid var(--rtc-bg-fifth);
+}

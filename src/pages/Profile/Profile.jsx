@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { logout } from "../../reducers/users/users.actions";
 import "./Profile.css";
 import { UsersContext } from "../../providers/UsersProvider";
@@ -15,13 +15,18 @@ const Profile = () => {
   const { state, dispatch } = useContext(UsersContext);
   const navigate = useNavigate();
   const { user } = state;
+  const [toggle, setToggle] = useState(true);
 
   return (
     <div id="profile">
-      <Button className="logout" onClick={() => logout(dispatch, navigate)} mode="dark">
+      <Button
+        className="logout"
+        onClick={() => logout(dispatch, navigate)}
+        mode="dark"
+      >
         Logout
       </Button>
-      <FlipCard w="40%" h="550px">
+      <FlipCard minW="370px" w="40%" h="550px" toggle={toggle}>
         <FlipCardFront>
           <div className="info_user">
             <ImgWrp w="250px" h="250px" borderRadius="100%">
@@ -39,6 +44,18 @@ const Profile = () => {
         </FlipCardFront>
         <FlipCardBack>
           <CreateProject />
+        </FlipCardBack>
+      </FlipCard>
+      <FlipCard toggle={toggle} w="40%" h="50px">
+        <FlipCardFront>
+          <Button mode="dark" onClick={() => setToggle(false)}>
+            Subir un proyecto
+          </Button>
+        </FlipCardFront>
+        <FlipCardBack>
+          <Button border onClick={() => setToggle(true)}>
+            Ver mi perfil
+          </Button>
         </FlipCardBack>
       </FlipCard>
     </div>
