@@ -4,6 +4,8 @@ import Arrow from "../../components/Arrow/Arrow";
 import Cortinilla from "../../components/Cortinilla/Cortinilla";
 import { motion } from "framer-motion";
 import BestProjects from "../../components/BestProjects/BestProjects";
+import Select from "../../components/Select/Select";
+import Option from "../../components/Option/Option";
 
 const Home = () => {
   const { openned, transition } = useChangePage({ path: "/projects" });

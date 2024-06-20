@@ -1,0 +1,29 @@
+.common_option {
+    height: 60px;
+    width: 100%;
+    cursor: pointer;
+    background-color: var(--rtc-bg-fifth);
+    color: var(--rtc-text-tertiary);
+    text-align: center;
+    border-width: 0px 0px 2px 0px;
+    border-style: solid;
+    border-color: var(--rtc-bg-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.common_option:last-child {
+    border: none;
+}
+
+.common_option.light {
+    background-color: var(--rtc-bg-secondary);
+    color: var(--rtc-text-secondary);
+    border-color: var(--rtc-bg-fifth);
+}
+
+.common_option:hover {
+    filter: brightness(110%);
+}

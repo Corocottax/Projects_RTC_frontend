@@ -1,0 +1,56 @@
+.common_select {
+    height: 40px;
+    width: 200px;
+    background-color: var(--rtc-bg-fifth);
+    border-radius: var(--rtc-br-secondary);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+}
+
+.common_select > img {
+    width: 40px;
+    transform: rotate(90deg);
+    transition: all 0.5s;
+}
+
+.common_select.light {
+    background-color: var(--rtc-bg-secondary);
+}
+
+.common_select.openned > img {
+    transform: perspective(900px) rotate(270deg) rotateX(180deg);
+}
+
+.common_select > .options {
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    background-color: var(--rtc-bg-fifth);
+    top: 42px;
+    border-radius: var(--rtc-br-secondary);
+    transition: all 0.5s;
+    overflow: hidden;
+    z-index: 999;
+    overflow-y: scroll;
+}
+
+.common_select.light > .options {
+    background-color: var(--rtc-bg-secondary);
+}
+
+.common_select.openned > .options {
+    opacity: 1;
+}
+
+.common_select > p {
+    color: var(--rtc-text-tertiary);
+    font-weight: 500;
+    padding-left: 10px;
+}
+
+.common_select.light > p {
+    color: var(--rtc-text-secondary);
+}

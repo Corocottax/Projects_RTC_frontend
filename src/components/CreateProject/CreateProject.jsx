@@ -5,7 +5,8 @@ import "./CreateProject.css";
 import { useContext, useEffect } from "react";
 import { UsersContext } from "../../providers/UsersProvider";
 import { getRepositories } from "../../reducers/users/users.actions";
-import { fillProjectsNumbers } from "../../utils/functions/printOptions";
+import Select from "../Select/Select";
+import Option from "../Option/Option";
 
 //TODO: REFACTORIZAR
 
@@ -40,8 +41,8 @@ const CreateProject = () => {
       body: send,
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     });
 
     const response = await res.json();
@@ -66,15 +67,20 @@ const CreateProject = () => {
         />
         <div>
           <label>Número de proyecto en la escuela</label>
-          <select {...register("type")}>{fillProjectsNumbers(13)}</select>
+          <Select maxHeight="170px" maxWidth="100px">
+            {Array.from({ length: 13 }, (_, i) => i + 1).map((el) => (
+              <Option value={el}>{el}</Option>
+            ))}
+          </Select>
+          {/* <select {...register("type")}>{fillProjectsNumbers(13)}</select> */}
         </div>
         <div>
           <label>Repositorio</label>
-          <select>
+          <Select maxHeight="180px" maxWidth="300px">
             {repositories?.map((repository) => (
-              <option value={repository.id}>{repository.name}</option>
+              <Option value={repository.id}>{repository.name}</Option>
             ))}
-          </select>
+          </Select>
         </div>
       </Form>
     </div>
