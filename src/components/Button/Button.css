@@ -1,0 +1,36 @@
+.main_button {
+    border-radius: var(--rtc-br-primary);
+    padding: var(--rtc-padding-xs) var(--rtc-padding-s);
+    cursor: pointer;
+    background-color: var(--rtc-bg-secondary);
+    color: var(--rtc-text-primary);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.5s;
+}
+
+.main_button.s {
+    padding: var(--rtc-padding-xxs) var(--rtc-padding-xs);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.main_button.l {
+    padding: var(--rtc-padding-s) var(--rtc-padding-m);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.main_button.dark {
+    background-color: var(--rtc-bg-fifth);
+    color: var(--rtc-text-tertiary);
+}
+
+.main_button:hover {
+    background-color: var(--rtc-color-900);
+}
+
+.main_button.dark:hover {
+    background-color: var(--rtc-color-100);
+}

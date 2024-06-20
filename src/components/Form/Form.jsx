@@ -1,3 +1,4 @@
+import Button from "../Button/Button";
 import "./Form.css";
 
 const Form = ({
@@ -9,7 +10,7 @@ const Form = ({
   return (
     <form className={`common-form scheme-${colorScheme}`} onSubmit={handleSubmit}>
       {children}
-      <button>{buttonText}</button>
+      <Button>{buttonText}</Button>
     </form>
   );
 };

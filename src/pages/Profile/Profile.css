@@ -9,7 +9,16 @@
     gap: var(--rtc-gap-s);
 }
 
-#profile > button {
+#profile .info_user {
+    padding: var(--rtc-padding-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--rtc-gap-s);
+}
+
+#profile .logout {
     position: absolute;
     top: 10px;
     left: 10px;

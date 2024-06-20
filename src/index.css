@@ -36,6 +36,7 @@
   --rtc-text-hover-seconadry: var(--rtc-color-400);
 
   /* SPACINGS */
+  --rtc-margin-xxs: 5px;
   --rtc-margin-xs: 10px;
   --rtc-margin-s: 20px;
   --rtc-margin-m: 30px;
@@ -43,6 +44,7 @@
   --rtc-margin-xl: 50px;
   --rtc-margin-xxl: 60px;
 
+  --rtc-padding-xxs: 5px;
   --rtc-padding-xs: 10px;
   --rtc-padding-s: 20px;
   --rtc-padding-m: 30px;
@@ -50,6 +52,7 @@
   --rtc-padding-xl: 50px;
   --rtc-padding-xxl: 60px;
 
+  --rtc-gap-xxs: 5px;
   --rtc-gap-xs: 10px;
   --rtc-gap-s: 20px;
   --rtc-gap-m: 30px;

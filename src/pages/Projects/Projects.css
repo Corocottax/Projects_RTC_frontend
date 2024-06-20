@@ -5,15 +5,12 @@
     padding: var(--rtc-padding-xl);
 }
 
-#projects * {
+/* #projects * {
     color: var(--rtc-text-tertiary);
-}
+} */
 
 #projects>.projects {
     display: flex;
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    justify-items: center; */
     gap: var(--rtc-gap-m);
     justify-content: center;
     align-items: center;
@@ -27,6 +24,11 @@
     margin-top: var(--rtc-margin-xl);
     gap: var(--rtc-gap-m);
 }
+
+#projects>.change-page>h3 {
+    color: var(--rtc-text-tertiary);
+}
+
 
 #projects .project {
     min-width: 300px;
@@ -42,23 +44,23 @@
     padding: var(--rtc-padding-s);
 }
 
-#projects .project > h3 {
+#projects .project>h3 {
     display: none;
 }
 
-#projects .project > .img_wrp {
+#projects .project>.img_wrp {
     height: 200px;
     border-radius: var(--rtc-br-primary);
     overflow: hidden;
 }
 
-#projects .project > .img_wrp > img {
+#projects .project>.img_wrp>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-#projects .project > .description {
+#projects .project>.description {
     margin-top: var(--rtc-margin-s);
     text-align: center;
     max-height: 200px;
@@ -67,11 +69,5 @@
     -webkit-line-clamp: 7;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-#projects > .change-page > button {
-    padding: var(--rtc-padding-xs) var(--rtc-padding-s);
-    border-radius: var(--rtc-br-primary);
-    border: none;
-    cursor: pointer;
+    color: var(--rtc-text-tertiary);
 }

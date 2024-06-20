@@ -8,6 +8,7 @@ import {
   changePage,
   getProjects,
 } from "../../reducers/projects/projects.actions";
+import Button from "../../components/Button/Button";
 
 const Projects = () => {
   const { openned, transition } = useChangePage({ path: "/" });
@@ -38,23 +39,24 @@ const Projects = () => {
                 consectetur adipisicing elit. Quam voluptates sit, quasi dolorem
                 quidem ad deserunt numquam deleniti. Nostrum facilis porro
                 corrupti quam? Error explicabo magni dolorum? Magni, odio
-                facilis?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam
-                voluptates sit, quasi dolorem quidem ad deserunt numquam
-                deleniti. Nostrum facilis porro corrupti quam? Error explicabo
-                magni dolorum? Magni, odio facilis?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam
-                voluptates sit, quasi dolorem quidem ad deserunt numquam
-                deleniti. Nostrum facilis porro corrupti quam? Error explicabo
-                magni dolorum? Magni, odio facilis?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam
-                voluptates sit, quasi dolorem quidem ad deserunt numquam
-                deleniti. Nostrum facilis porro corrupti quam? Error explicabo
-                magni dolorum? Magni, odio facilis?
+                facilis?Lorem ipsum dolor, sit amet consectetur adipisicing
+                elit. Quam voluptates sit, quasi dolorem quidem ad deserunt
+                numquam deleniti. Nostrum facilis porro corrupti quam? Error
+                explicabo magni dolorum? Magni, odio facilis?Lorem ipsum dolor,
+                sit amet consectetur adipisicing elit. Quam voluptates sit,
+                quasi dolorem quidem ad deserunt numquam deleniti. Nostrum
+                facilis porro corrupti quam? Error explicabo magni dolorum?
+                Magni, odio facilis?Lorem ipsum dolor, sit amet consectetur
+                adipisicing elit. Quam voluptates sit, quasi dolorem quidem ad
+                deserunt numquam deleniti. Nostrum facilis porro corrupti quam?
+                Error explicabo magni dolorum? Magni, odio facilis?
               </p>
             </div>
           );
         })}
       </div>
       <div className="change-page">
-        <button
+        <Button
           onClick={() =>
             changePage(
               dispatch,
@@ -65,11 +67,11 @@ const Projects = () => {
           }
         >
           Previous
-        </button>
+        </Button>
         <h3>
           {info?.currentPage} / {info?.pages}
         </h3>
-        <button
+        <Button
           onClick={() =>
             changePage(
               dispatch,
@@ -80,7 +82,7 @@ const Projects = () => {
           }
         >
           Next
-        </button>
+        </Button>
       </div>
     </div>
   );

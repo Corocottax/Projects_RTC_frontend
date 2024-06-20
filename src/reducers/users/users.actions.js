@@ -44,3 +44,13 @@ export const logout = async (dispatch, navigate) => {
   localStorage.removeItem("token");
   navigate("/");
 };
+
+export const getRepositories = async (dispatch, user) => {
+  const res = await fetch(
+    `https://api.github.com/users/${user?.github
+      .split("/")
+      .at(-1)}/repos?sort=pushed`
+  );
+  const response = await res.json();
+  dispatch({ type: "GET_REPOSITORIES", payload: response });
+};

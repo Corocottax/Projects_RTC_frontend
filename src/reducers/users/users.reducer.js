@@ -1,6 +1,7 @@
 export const USERS_INITIAL = {
   user: null,
   token: null,
+  repositories: [],
 };
 
 export const usersReducer = (state, action) => {
@@ -22,6 +23,11 @@ export const usersReducer = (state, action) => {
         ...state,
         user: null,
         token: null,
+      };
+    case "GET_REPOSITORIES":
+      return {
+        ...state,
+        repositories: [...action.payload],
       };
     default:
       return { ...state };

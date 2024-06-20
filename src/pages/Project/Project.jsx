@@ -7,6 +7,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import ImgWrp from "../../components/ImgWrp/ImgWrp";
 import Stars from "../../components/Stars/Stars";
 import { API } from "../../API/API";
+import Button from "../../components/Button/Button";
 
 const Project = () => {
   const { id } = useParams();
@@ -44,9 +45,7 @@ const Project = () => {
         <div className="info_project">
           {project && <Carousel imgs={project.imgs} w="250px" h="250px" />}
           <h3>{project?.title}</h3>
-          <p>
-            {project?.description}
-          </p>
+          <p>{project?.description}</p>
           <Stars averageRating={project?.averageRating} visible />
         </div>
         <div className="comments">
@@ -61,7 +60,7 @@ const Project = () => {
           </div>
           <div className="send_message">
             <textarea placeholder="Escribe aquí tu comentario" ref={comment} />
-            <button onClick={submit}>Enviar</button>
+            <Button onClick={submit} mode="dark">Enviar</Button>
           </div>
         </div>
       </div>

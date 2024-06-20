@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import { useContext } from "react";
 import { UsersContext } from "./providers/UsersProvider";
 import Profile from "./pages/Profile/Profile";
+import Alert from "./components/Alert/Alert";
 
 const App = () => {
   const { state } = useContext(UsersContext);
