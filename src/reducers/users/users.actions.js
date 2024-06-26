@@ -1,26 +1,26 @@
 import { API } from "../../API/API";
 
 export const login = async (data, dispatch, navigate, setAlert) => {
+  dispatch({ type: "LOADING" });
   //TODO: LOADING EN EL FORMULARIO AL HACER LOGIN
-  setTimeout(async () => {
-    const res = await API({
-      endpoint: "/users/login",
-      method: "POST",
-      body: data,
-    });
+  const res = await API({
+    endpoint: "/users/login",
+    method: "POST",
+    body: data,
+  });
 
-    if (res.status === 200) {
-      dispatch({
-        type: "LOGIN",
-        payload: { user: res.response.user, token: res.response.token },
-      });
-      localStorage.setItem("token", res.response.token);
-      navigate("/profile");
-      setAlert();
-    } else {
-      setAlert({ message: res.response, type: "error" });
-    }
-  }, 5000);
+  if (res.status === 200) {
+    dispatch({
+      type: "LOGIN",
+      payload: { user: res.response.user, token: res.response.token },
+    });
+    localStorage.setItem("token", res.response.token);
+    navigate("/profile");
+    setAlert();
+  } else {
+    dispatch({ type: "STOP_LOADING" });
+    setAlert({ message: res.response, type: "error" });
+  }
 };
 
 export const checksession = async (dispatch, navigate) => {

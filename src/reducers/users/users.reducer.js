@@ -1,4 +1,5 @@
 export const USERS_INITIAL = {
+  loading: false,
   user: null,
   token: null,
   repositories: [],
@@ -6,11 +7,16 @@ export const USERS_INITIAL = {
 
 export const usersReducer = (state, action) => {
   switch (action.type) {
+    case "LOADING":
+      return { ...state, loading: true };
+    case "STOP_LOADING":
+      return { ...state, loading: false };
     case "LOGIN":
       return {
         ...state,
         user: { ...action.payload.user },
         token: action.payload.token,
+        loading: false,
       };
     case "CHECK_SESSION":
       return {

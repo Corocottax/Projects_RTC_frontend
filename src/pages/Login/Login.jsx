@@ -7,6 +7,7 @@ import { useContext, useEffect } from "react";
 import { UsersContext } from "../../providers/UsersProvider";
 import { useNavigate } from "react-router-dom";
 import { AlertContext } from "../../providers/AlertProvider";
+import Button from "../../components/Button/Button";
 
 const Login = () => {
   const {
@@ -19,6 +20,7 @@ const Login = () => {
 
   const { state, dispatch } = useContext(UsersContext);
   const { setAlert } = useContext(AlertContext);
+  const { loading } = state;
 
   //TODO: REFACTORIZAR USEEFFECT
   useEffect(() => {
@@ -38,7 +40,6 @@ const Login = () => {
         handleSubmit={handleSubmit((data) =>
           login(data, dispatch, navigate, setAlert)
         )}
-        buttonText="Login"
       >
         <FieldForm
           labelText="Email"
@@ -61,6 +62,7 @@ const Login = () => {
           type="password"
           ph="*****"
         />
+        <Button loading={loading}>Login</Button>
       </Form>
     </div>
   );

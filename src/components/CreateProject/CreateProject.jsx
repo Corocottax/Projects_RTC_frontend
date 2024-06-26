@@ -7,6 +7,7 @@ import { UsersContext } from "../../providers/UsersProvider";
 import { getRepositories } from "../../reducers/users/users.actions";
 import Select from "../Select/Select";
 import Option from "../Option/Option";
+import Button from "../Button/Button";
 
 //TODO: REFACTORIZAR
 
@@ -52,7 +53,6 @@ const CreateProject = () => {
   return (
     <div>
       <Form
-        buttonText="Subir proyecto"
         handleSubmit={handleSubmit((data) => publishProyect(data))}
       >
         <FieldForm
@@ -82,6 +82,7 @@ const CreateProject = () => {
             ))}
           </Select>
         </div>
+        <Button>Subir proyecto</Button>
       </Form>
     </div>
   );
