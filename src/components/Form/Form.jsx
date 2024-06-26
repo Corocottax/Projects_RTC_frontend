@@ -4,9 +4,10 @@ const Form = ({
   handleSubmit,
   children,
   colorScheme = "light",
+  className = ""
 }) => {
   return (
-    <form className={`common-form scheme-${colorScheme}`} onSubmit={handleSubmit}>
+    <form className={`common-form scheme-${colorScheme} ${className}`} onSubmit={handleSubmit}>
       {children}
     </form>
   );

@@ -2,6 +2,7 @@ import { API } from "../../API/API";
 
 export const login = async (data, dispatch, navigate, setAlert) => {
   dispatch({ type: "LOADING" });
+
   //TODO: LOADING EN EL FORMULARIO AL HACER LOGIN
   const res = await API({
     endpoint: "/users/login",
