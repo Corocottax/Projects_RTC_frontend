@@ -1,0 +1,28 @@
+.loader_dots {
+    width: 10px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: l5 1s infinite linear alternate;
+}
+
+@keyframes l5 {
+    0% {
+        box-shadow: 15px 0 var(--rtc-color-700), -15px 0 rgba(68, 68, 68, 0.201);
+        background: var(--rtc-color-700)
+    }
+
+    33% {
+        box-shadow: 15px 0 var(--rtc-color-700), -15px 0 rgba(68, 68, 68, 0.201);
+        background: rgba(68, 68, 68, 0.201)
+    }
+
+    66% {
+        box-shadow: 15px 0 rgba(68, 68, 68, 0.201), -15px 0 var(--rtc-color-700);
+        background: rgba(68, 68, 68, 0.201)
+    }
+
+    100% {
+        box-shadow: 15px 0 rgba(68, 68, 68, 0.201), -15px 0 var(--rtc-color-700);
+        background: var(--rtc-color-700)
+    }
+}

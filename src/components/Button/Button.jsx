@@ -1,3 +1,4 @@
+import LoadingDots from "../LoadingDots/LoadingDots";
 import "./Button.css";
 
 const Button = ({
@@ -19,7 +20,7 @@ const Button = ({
     >
       {children}
       {loading && (
-        <img src="/assets/icons/loading.webp" />
+        <LoadingDots/>
       )}
     </button>
   );
