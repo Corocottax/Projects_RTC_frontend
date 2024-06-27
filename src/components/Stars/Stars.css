@@ -3,7 +3,7 @@
     gap: var(--rtc-gap-s);
     align-items: center;
     justify-content: center;
-    background-color: var(--rtc-bg-fifth);
+    background-color: var(--rtc-color-300);
     width: 100%;
     margin: auto;
     transition: all 0.5s;
@@ -17,7 +17,7 @@
 }
 
 .best_project:hover ~ .stars {
-    height: 30px;
+    height: 30px !important;
     padding: var(--rtc-padding-xs);
     border-radius: 0px 0px 20px 20px;
 }
