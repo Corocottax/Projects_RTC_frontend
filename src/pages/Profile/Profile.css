@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--rtc-gap-s);
+    padding-top: 100px;
 }
 
 #profile .info_user {
@@ -24,11 +25,24 @@
     left: 10px;
 }
 
+#profile > .button_projects {
+    margin-top: 100px;
+}
+
+#profile > .title_projects {
+    display: none;
+    font-size: 30px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
 #profile > .projects {
-    display: flex;
+    display: none;
+    /* display: flex; */
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: var(--rtc-gap-s);
-    margin-top: var(--rtc-margin-l);
+    opacity: 0;
+    transition: all 0.5s;
 }

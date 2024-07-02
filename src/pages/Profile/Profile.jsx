@@ -16,6 +16,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const { user } = state;
   const [toggle, setToggle] = useState(true);
+  const [showProjects, setShowProjects] = useState(false);
 
   return (
     <div id="profile">
@@ -35,11 +36,6 @@ const Profile = () => {
             <h3>{user?.email}</h3>
             <h3>{user?.name}</h3>
             <h3>{user?.lastName}</h3>
-            <div className="projects">
-              {user?.projects.map((project) => (
-                <BestProject project={project} key={project._id} />
-              ))}
-            </div>
           </div>
         </FlipCardFront>
         <FlipCardBack>
@@ -58,6 +54,33 @@ const Profile = () => {
           </Button>
         </FlipCardBack>
       </FlipCard>
+      <Button
+        mode="dark"
+        className="button_projects"
+        onClick={() => setShowProjects(!showProjects)}
+      >
+        Mostrar mis proyectos
+      </Button>
+      <h3
+        className="title_projects"
+        style={{
+          display: showProjects ? "flex" : "none",
+          opacity: showProjects ? 1 : 0,
+        }}
+      >
+        Mis proyectos
+      </h3>
+      <div
+        className="projects"
+        style={{
+          display: showProjects ? "flex" : "none",
+          opacity: showProjects ? 1 : 0,
+        }}
+      >
+        {user?.projects.map((project) => (
+          <BestProject project={project} key={project._id} />
+        ))}
+      </div>
     </div>
   );
 };
