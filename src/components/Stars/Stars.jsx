@@ -2,7 +2,6 @@ import { useCallback } from "react";
 import "./Stars.css";
 
 const Stars = ({ averageRating, visible }) => {
-  console.log(averageRating);
 
   const printStars = useCallback(() => {
     const arrayStars = [];
@@ -15,8 +14,6 @@ const Stars = ({ averageRating, visible }) => {
       } else if (averageRating < i) {
         percentaje = 0;
       }
-
-      console.log(percentaje);
 
       arrayStars.push(
         <div

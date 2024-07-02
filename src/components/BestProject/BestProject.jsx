@@ -13,7 +13,6 @@ const BestProject = ({ project }) => {
             <h2>{project.title}</h2>
             <div>
               <ImgWrp w="50px" h="50px" borderRadius="10px">
-              {console.log(project.user)}
                 <img
                   src={
                     project.user.avatar

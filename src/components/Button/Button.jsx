@@ -9,6 +9,7 @@ const Button = ({
   size = "m",
   border = false,
   loading = false,
+  type = "button"
 }) => {
   return (
     <button
@@ -17,6 +18,7 @@ const Button = ({
         border ? "border" : ""
       } ${loading ? "loading" : ""}`}
       disabled={loading}
+      type={type}
     >
       {children}
       {loading && (

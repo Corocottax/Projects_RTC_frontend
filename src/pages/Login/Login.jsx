@@ -62,7 +62,7 @@ const Login = () => {
           type="password"
           ph="*****"
         />
-        <Button loading={loading}>Login</Button>
+        <Button loading={loading} type="submit">Login</Button>
       </Form>
     </div>
   );

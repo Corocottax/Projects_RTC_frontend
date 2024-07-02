@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import FieldForm from "../FieldForm/FieldForm";
 import Form from "../Form/Form";
 import "./CreateProject.css";
@@ -13,7 +13,8 @@ import InputFile from "../InputFile/InputFile";
 //TODO: REFACTORIZAR
 
 const CreateProject = () => {
-  const { register, handleSubmit, formState, getValues } = useForm();
+  const methods = useForm();
+  const { register, handleSubmit, formState, getValues } = methods;
   const { state, dispatch } = useContext(UsersContext);
   const { user, repositories } = state;
   const [step, setStep] = useState(1);
@@ -24,120 +25,124 @@ const CreateProject = () => {
   }, [user]);
 
   const publishProyect = async (data) => {
-    console.log(data);
-    /* const obj = {
-      title: data.title,
-      nameUser: user.name,
-      description: data.description,
-      link: "asdf",
-      deployLink: "asldfkl",
-      type: data.type,
-      user: user._id,
-    }; */
+    const repository = repositories.find(
+      (repository) => repository.name === data.repository
+    );
 
-    /* const send = JSON.stringify(obj);
+    const body = new FormData();
+
+    body.append("title", data.title);
+    body.append("description", data.description);
+    body.append("link", repository.html_url);
+    body.append("deploy", repository.homepage);
+    body.append("type", data.type);
+    body.append("imgs", data.firstImg[0]);
+    body.append("imgs", data.secondImg[0] || "");
+    body.append("imgs", data.thirdImg[0] || "");
+    body.append("vote", 5);
 
     const res = await fetch("http://localhost:3000/api/v1/projects/", {
       method: "POST",
-      body: send,
+      body: body,
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
       },
     });
 
     const response = await res.json();
-    console.log(response); */
+    console.log(response);
   };
-
-  useEffect(() => {
-    console.log(formState.dirtyFields);
-  }, [formState])
 
   return (
     <div>
-      <Form
-        className="create_project_form"
-        handleSubmit={handleSubmit((data) => publishProyect(data))}
-      >
-        <img src="/assets/rtc.webp" />
-        {step === 1 && (
-          <>
-            <FieldForm
-              labelText="Título"
-              ph="Título de tu proyecto"
-              register={() => register("title", { required: true })}
-            />
-            <FieldForm
-              labelText="Descripción"
-              ph="Escribe aquí la descripción..."
-              register={() => register("description", { required: true })}
-            />
-          </>
-        )}
-        {step === 2 && (
-          <div className="step_2">
-            <div>
-              <label>Número de proyecto</label>
-              <Select maxHeight="200px" maxWidth="300px">
-                {Array.from({ length: 13 }, (_, i) => i + 1).map((el) => (
-                  <Option value={el}>{el}</Option>
-                ))}
-              </Select>
-            </div>
-            <div>
-              <label>Repositorio</label>
-              <Select maxHeight="200px" maxWidth="300px">
-                {repositories?.map((repository) => (
-                  <Option value={repository.id}>{repository.name}</Option>
-                ))}
-              </Select>
-            </div>
-          </div>
-        )}
-        {step === 3 && (
-          <div className="step_3">
-            <h3>Sube al menos una imagen para tu proyecto</h3>
-            <div>
-              <InputFile
-                num="1"
-                register={() => register("firstImg", { required: true })}
-                registerName="firstImg"
-                formState={formState}
-                getValues={getValues}
+      <FormProvider {...methods}>
+        <Form
+          className="create_project_form"
+          handleSubmit={handleSubmit((data) => publishProyect(data))}
+        >
+          <img src="/assets/rtc.webp" />
+          {step === 1 && (
+            <>
+              <FieldForm
+                labelText="Título"
+                ph="Título de tu proyecto"
+                register={() => register("title", { required: true })}
               />
-              <InputFile
-                num="2"
-                register={() => register("secondImg")}
-                registerName="secondImg"
-                formState={formState}
-                getValues={getValues}
+              <FieldForm
+                labelText="Descripción"
+                ph="Escribe aquí la descripción..."
+                register={() => register("description", { required: true })}
               />
-              <InputFile
-                num="3"
-                register={() => register("thirdImg")}
-                registerName="thirdImg"
-                formState={formState}
-                getValues={getValues}
-              />
-            </div>
-          </div>
-        )}
-        <div className="buttons_create_project">
-          {step > 1 && (
-            <Button onClick={() => setStep(step - 1)} className="previous">
-              Anterior
-            </Button>
+            </>
           )}
-          {step < 3 ? (
-            <Button onClick={() => setStep(step + 1)} className="next">
-              Siguiente
-            </Button>
-          ) : (
-            <Button>Subir proyecto</Button>
+          {step === 2 && (
+            <div className="step_2">
+              <div>
+                <label>Número de proyecto</label>
+                <Select maxHeight="200px" maxWidth="300px" name="type">
+                  {Array.from({ length: 13 }, (_, i) => i + 1).map((el) => (
+                    <Option value={el} key={el}>
+                      {el}
+                    </Option>
+                  ))}
+                </Select>
+              </div>
+              <div>
+                <label>Repositorio</label>
+                <Select maxHeight="200px" maxWidth="300px" name="repository">
+                  {repositories?.map((repository) => (
+                    <Option value={repository.id} key={repository.id}>
+                      {repository.name}
+                    </Option>
+                  ))}
+                </Select>
+              </div>
+            </div>
           )}
-        </div>
-      </Form>
+          {step === 3 && (
+            <div className="step_3">
+              <h3>Sube al menos una imagen para tu proyecto</h3>
+              <div>
+                <InputFile
+                  num="1"
+                  register={() => register("firstImg", { required: true })}
+                  registerName="firstImg"
+                  formState={formState}
+                  getValues={getValues}
+                />
+                <InputFile
+                  num="2"
+                  register={() => register("secondImg")}
+                  registerName="secondImg"
+                  formState={formState}
+                  getValues={getValues}
+                />
+                <InputFile
+                  num="3"
+                  register={() => register("thirdImg")}
+                  registerName="thirdImg"
+                  formState={formState}
+                  getValues={getValues}
+                />
+              </div>
+            </div>
+          )}
+          <div className="buttons_create_project">
+            {step > 1 && (
+              <Button onClick={() => setStep(step - 1)} className="previous">
+                Anterior
+              </Button>
+            )}
+            {step < 3 ? (
+              <Button onClick={() => setStep(step + 1)} className="next">
+                Siguiente
+              </Button>
+            ) : (
+              <Button type="submit">Subir proyecto</Button>
+            )}
+          </div>
+        </Form>
+      </FormProvider>
     </div>
   );
 };

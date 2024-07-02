@@ -1,11 +1,26 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import "./Select.css";
+import { useFormContext } from 'react-hook-form';
 
 export const SelectContext = createContext();
 
-const Select = ({ mode = "light", children, maxHeight, maxWidth }) => {
+const Select = ({
+  mode = "light",
+  children,
+  maxHeight,
+  maxWidth,
+  name,
+}) => {
   const [openned, setOpenned] = useState(false);
   const [optionSelected, setOptionSelected] = useState();
+  const { register, setValue } = useFormContext();
+  
+
+  useEffect(() => {
+    if (optionSelected) {
+      setValue(name, optionSelected.text);
+    }
+  }, [optionSelected]);
 
   return (
     <div
@@ -13,7 +28,7 @@ const Select = ({ mode = "light", children, maxHeight, maxWidth }) => {
       onClick={() => setOpenned(!openned)}
       style={{ maxWidth: maxWidth && maxWidth }}
     >
-      <p>{optionSelected?.text}</p>
+      <input {...register(name)} value={optionSelected?.text || ""} disabled/>
       <img src={`/assets/icons/arrow-${mode}.png`} />
       <SelectContext.Provider value={{ mode, setOptionSelected }}>
         <ul
@@ -21,7 +36,7 @@ const Select = ({ mode = "light", children, maxHeight, maxWidth }) => {
           style={{
             height:
               openned && children ? `${children?.length * 60 || 60}px` : "0px",
-            maxHeight: maxHeight && maxHeight
+            maxHeight: maxHeight && maxHeight,
           }}
         >
           {children}

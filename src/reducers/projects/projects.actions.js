@@ -16,8 +16,6 @@ export const getProject = async (dispatch, id) => {
 export const getProjects = async (dispatch) => {
   const { projects, info } = (await API({ endpoint: "/projects" })).response;
 
-  console.log(projects);
-
   dispatch({
     type: "GET_PROJECTS",
     payload: { projects, info },

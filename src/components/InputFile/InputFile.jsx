@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./InputFile.css";
 
 const InputFile = ({ num, register, formState, registerName, getValues }) => {
-  /*  console.log(formState); */
   const [file, setFile] = useState("/assets/icons/upload.png");
 
   const selectFile = (e) => {
@@ -18,7 +17,7 @@ const InputFile = ({ num, register, formState, registerName, getValues }) => {
 
   return (
     <div className="input_file">
-      <label for={`img_project_${num}`}>
+      <label htmlFor={`img_project_${num}`}>
         <img src={file} />
       </label>
       <input

@@ -45,12 +45,16 @@
     opacity: 1;
 }
 
-.common_select > p {
+.common_select > input {
     color: var(--rtc-text-tertiary);
     font-weight: 500;
     padding-left: 10px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    max-width: 80%;
 }
 
-.common_select.light > p {
+.common_select.light > input {
     color: var(--rtc-text-secondary);
 }
