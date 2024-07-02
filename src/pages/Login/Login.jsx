@@ -8,6 +8,7 @@ import { UsersContext } from "../../providers/UsersProvider";
 import { useNavigate } from "react-router-dom";
 import { AlertContext } from "../../providers/AlertProvider";
 import Button from "../../components/Button/Button";
+import { useFormErrors } from "../../utils/customHooks/useFormErrors";
 
 const Login = () => {
   const {
@@ -21,19 +22,8 @@ const Login = () => {
   const { state, dispatch } = useContext(UsersContext);
   const { setAlert } = useContext(AlertContext);
   const { loading } = state;
-
-  //TODO: REFACTORIZAR USEEFFECT
-  useEffect(() => {
-    if (Object.keys(errors).length) {
-      setAlert({
-        message: errors[Object.keys(errors)[0]].message,
-        type: "error",
-      });
-    } else {
-      setAlert(null);
-    }
-  }, [Object.keys(errors).length]);
-
+  useFormErrors(errors);
+  
   return (
     <div id="login">
       <Form

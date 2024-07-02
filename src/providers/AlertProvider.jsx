@@ -8,7 +8,11 @@ const AlertProvider = ({ children }) => {
 
   return (
     <AlertContext.Provider value={{ setAlert }}>
-      {alert && <Alert message={alert.message} type={alert.type} />}
+      <Alert
+        message={alert?.message}
+        type={alert?.type}
+        show={alert ? true : false}
+      />
       {children}
     </AlertContext.Provider>
   );

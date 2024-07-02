@@ -9,7 +9,7 @@ const Button = ({
   size = "m",
   border = false,
   loading = false,
-  type = "button"
+  type="button"
 }) => {
   return (
     <button

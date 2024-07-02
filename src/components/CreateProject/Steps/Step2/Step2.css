@@ -1,0 +1,19 @@
+.create_project_form>.step_2>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--rtc-gap-xs);
+}
+
+.create_project_form>.step_2>div>label {
+    font-weight: 500;
+}
+
+.create_project_form>.step_2 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--rtc-gap-m);
+    flex-wrap: wrap;
+}

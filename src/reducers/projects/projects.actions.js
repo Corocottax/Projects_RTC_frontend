@@ -50,3 +50,52 @@ export const changePage = async (
     });
   }
 };
+
+export const postProject = async (
+  data,
+  repositories,
+  setAlert,
+  next,
+  errors,
+  step,
+  limit
+) => {
+
+  console.log(step);
+  console.log(limit);
+
+  if (step < limit && !Object.keys(errors).length) {
+    next();
+  } else {
+    const repository = repositories.find(
+      (repository) => repository.name === data.repository
+    );
+
+    const body = new FormData();
+
+    body.append("title", data.title);
+    body.append("description", data.description);
+    body.append("link", repository.html_url);
+    body.append("deploy", repository.homepage);
+    body.append("type", data.type);
+    body.append("imgs", data.firstImg[0]);
+    body.append("imgs", data.secondImg[0] || "");
+    body.append("imgs", data.thirdImg[0] || "");
+    body.append("vote", 5);
+
+    const res = await fetch("http://localhost:3000/api/v1/projects/", {
+      method: "POST",
+      body: body,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
+    const response = await res.json();
+    console.log(response);
+    setAlert({
+      message: "Proyecto creado correctamente",
+      type: "success",
+    });
+  }
+};

@@ -2,7 +2,7 @@ import "./LoadingDots.css"
 
 const LoadingDots = () => {
   return (
-    <div class="loader_dots"></div>
+    <div className="loader_dots"></div>
   )
 }
 

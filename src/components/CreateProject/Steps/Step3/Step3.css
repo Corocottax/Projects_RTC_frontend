@@ -1,0 +1,29 @@
+.create_project_form>.step_3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--rtc-gap-m);
+    flex-direction: column;
+}
+
+.create_project_form>.step_3>div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--rtc-gap-m);
+    flex-wrap: wrap;
+}
+
+.create_project_form>.step_3>h3 {
+    font-size: 20px;
+    color: var(--rtc-color-700);
+}
+
+.buttons_create_project {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: var(--rtc-gap-m);
+}

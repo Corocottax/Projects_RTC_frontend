@@ -1,0 +1,13 @@
+.step_buttons .previous,
+.step_buttons .next {
+    width: 150px;
+}
+
+.step_buttons {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: var(--rtc-gap-m);
+}

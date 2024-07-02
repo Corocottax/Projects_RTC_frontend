@@ -10,6 +10,7 @@ const Select = ({
   maxHeight,
   maxWidth,
   name,
+  options
 }) => {
   const [openned, setOpenned] = useState(false);
   const [optionSelected, setOptionSelected] = useState();
@@ -28,7 +29,7 @@ const Select = ({
       onClick={() => setOpenned(!openned)}
       style={{ maxWidth: maxWidth && maxWidth }}
     >
-      <input {...register(name)} value={optionSelected?.text || ""} disabled/>
+      <input {...register(name, options)} value={optionSelected?.text || ""} disabled/>
       <img src={`/assets/icons/arrow-${mode}.png`} />
       <SelectContext.Provider value={{ mode, setOptionSelected }}>
         <ul
