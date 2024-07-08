@@ -14,12 +14,14 @@ export const getProject = async (dispatch, id) => {
 };
 
 export const getProjects = async (dispatch) => {
-  const { projects, info } = (await API({ endpoint: "/projects" })).response;
-
-  dispatch({
-    type: "GET_PROJECTS",
-    payload: { projects, info },
-  });
+  dispatch({ type: "LOADING" });
+  setTimeout(async () => {
+    const { projects, info } = (await API({ endpoint: "/projects" })).response;
+    dispatch({
+      type: "GET_PROJECTS",
+      payload: { projects, info },
+    });
+  }, 2000);
 };
 
 export const changePage = async (
@@ -32,6 +34,8 @@ export const changePage = async (
     return;
   }
 
+  dispatch({ type: "LOADING" });
+
   const cachedProject = cachedProjects.find(
     (element) => element.info.currentPage === currentPage
   );
@@ -42,12 +46,13 @@ export const changePage = async (
       payload: cachedProject.info,
     });
   } else {
-    const { projects, info } = (await API({ url })).response;
-
-    dispatch({
-      type: "GET_PROJECTS",
-      payload: { projects, info },
-    });
+    setTimeout(async () => {
+      const { projects, info } = (await API({ url })).response;
+      dispatch({
+        type: "GET_PROJECTS",
+        payload: { projects, info },
+      });
+    }, 2000);
   }
 };
 
@@ -60,7 +65,6 @@ export const postProject = async (
   step,
   limit
 ) => {
-
   console.log(step);
   console.log(limit);
 

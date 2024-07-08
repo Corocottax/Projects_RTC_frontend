@@ -1,0 +1,16 @@
+.skeleton {
+    border-radius: var(--rtc-br-primary);
+    animation: skeleton_animation 1.5s infinite;
+}
+
+@keyframes skeleton_animation {
+    0% {
+        background-color: #686868;
+    } 
+    50% {
+        background-color: rgba(112, 112, 112, 0.349);
+    }
+    100% {
+        background-color: #686868;
+    }
+}

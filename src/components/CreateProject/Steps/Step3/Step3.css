@@ -19,11 +19,3 @@
     color: var(--rtc-color-700);
 }
 
-.buttons_create_project {
-    position: absolute;
-    bottom: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: var(--rtc-gap-m);
-}

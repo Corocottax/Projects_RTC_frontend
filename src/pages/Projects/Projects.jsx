@@ -9,52 +9,38 @@ import {
   getProjects,
 } from "../../reducers/projects/projects.actions";
 import Button from "../../components/Button/Button";
+import { motion } from "framer-motion";
+import Skeleton from "../../components/Skeleton/Skeleton";
+import Project from "../../components/Project/Project";
 
 const Projects = () => {
   const { openned, transition } = useChangePage({ path: "/" });
   const { state, dispatch } = useContext(ProjectsContext);
-  const { cachedProjects, info } = state;
+  const { cachedProjects, info, loadingProjects } = state;
 
   useEffect(() => {
-    getProjects(dispatch);
+    if (!cachedProjects.length) {
+      getProjects(dispatch);
+    }
   }, []);
+
+  console.log(loadingProjects);
 
   return (
     <div id="projects">
       <Cortinilla openned={openned} mode="dark" position="left" />
       <Arrow funct={transition} position="left" mode="dark" />
-      <div className="projects">
-        {cachedProjects[info?.currentPage - 1]?.projects.map((project) => {
-          return (
-            <div key={project._id} className="project">
-              <h3>{project.title}</h3>
-              <div className="img_wrp">
-                <img src={project.imgs[0]} alt={project.title} />
-              </div>
-              <p className="description">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam
-                voluptates sit, quasi dolorem quidem ad deserunt numquam
-                deleniti. Nostrum facilis porro corrupti quam? Error explicabo
-                magni dolorum? Magni, odio facilis?Lorem ipsum dolor, sit amet
-                consectetur adipisicing elit. Quam voluptates sit, quasi dolorem
-                quidem ad deserunt numquam deleniti. Nostrum facilis porro
-                corrupti quam? Error explicabo magni dolorum? Magni, odio
-                facilis?Lorem ipsum dolor, sit amet consectetur adipisicing
-                elit. Quam voluptates sit, quasi dolorem quidem ad deserunt
-                numquam deleniti. Nostrum facilis porro corrupti quam? Error
-                explicabo magni dolorum? Magni, odio facilis?Lorem ipsum dolor,
-                sit amet consectetur adipisicing elit. Quam voluptates sit,
-                quasi dolorem quidem ad deserunt numquam deleniti. Nostrum
-                facilis porro corrupti quam? Error explicabo magni dolorum?
-                Magni, odio facilis?Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit. Quam voluptates sit, quasi dolorem quidem ad
-                deserunt numquam deleniti. Nostrum facilis porro corrupti quam?
-                Error explicabo magni dolorum? Magni, odio facilis?
-              </p>
-            </div>
-          );
-        })}
-      </div>
+      <motion.div
+        className="projects"
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+      >
+        {loadingProjects && <Skeleton quantity={10} w="300px" h="450px" />}
+        {!loadingProjects &&
+          cachedProjects[info?.currentPage - 1]?.projects.map((project) => (
+            <Project key={project._id} project={project} />
+          ))}
+      </motion.div>
       <div className="change-page">
         <Button
           onClick={() =>

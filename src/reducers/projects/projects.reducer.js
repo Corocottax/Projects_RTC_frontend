@@ -3,10 +3,13 @@ export const PROJECTS_INITIAL = {
   cachedProjects: [],
   project: null,
   info: null,
+  loadingProjects: false,
 };
 
 export const projectsReducer = (state, action) => {
   switch (action.type) {
+    case "LOADING":
+      return { ...state, loadingProjects: true };
     case "GET_PROJECTS":
       return {
         ...state,
@@ -18,9 +21,10 @@ export const projectsReducer = (state, action) => {
           },
         ],
         info: { ...action.payload.info },
+        loadingProjects: false,
       };
     case "GET_PREVIOUS_PROJECTS":
-      return { ...state, info: action.payload };
+      return { ...state, info: action.payload, loadingProjects: false };
     case "GET_PROJECT":
       return { ...state, project: { ...action.payload } };
     case "GET_BEST_PROJECTS":
