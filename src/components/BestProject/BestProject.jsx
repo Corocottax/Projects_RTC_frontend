@@ -1,39 +1,32 @@
 import { Link } from "react-router-dom";
-import Stars from "../Stars/Stars";
 import "./BestProject.css";
 import { motion } from "framer-motion";
 import ImgWrp from "../ImgWrp/ImgWrp";
 
 const BestProject = ({ project }) => {
+  console.log(project);
+
   return (
     <Link to={`/projects/${project._id}`}>
-      <motion.div className="best_project_wrp" animate={{ opacity: 1 }}>
-        <div className="best_project">
-          <div className="info">
-            <h2>{project.title}</h2>
+      <motion.article className="best_project_wrp" animate={{ opacity: 1 }}>
+        <ImgWrp w="100%" h="60%">
+          <img src={project.imgs[0]} />
+        </ImgWrp>
+        <div className="best_project_detail">
+          <h3>{project.title}</h3>
+          <div>
             <div>
-              <ImgWrp w="50px" h="50px" borderRadius="10px">
-                <img
-                  src={
-                    project.user.avatar
-                      ? project.user.avatar
-                      : "/assets/avatar/dino.png"
-                  }
-                  alt={project.nameUser}
-                />
+              <ImgWrp borderRadius="100%" w="50px" h="50px">
+                <img src={project.user.avatar} />
               </ImgWrp>
-              <h3>{project.nameUser}</h3>
+              <p>{project.nameUser}</p>
+            </div>
+            <div className="best_project_average_rating">
+              <p>{project.averageRating}</p>
             </div>
           </div>
-          <ImgWrp w="100%" h="100%">
-            <img
-              src={project.imgs[0]}
-              alt={`proyecto ${project.title} de ${project.nameUser}`}
-            />
-          </ImgWrp>
         </div>
-        <Stars averageRating={project.averageRating} />
-      </motion.div>
+      </motion.article>
     </Link>
   );
 };

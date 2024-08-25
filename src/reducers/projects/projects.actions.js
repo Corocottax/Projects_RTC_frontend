@@ -87,16 +87,13 @@ export const postProject = async (
     body.append("imgs", data.thirdImg[0] || "");
     body.append("vote", 5);
 
-    const res = await fetch("http://localhost:3000/api/v1/projects/", {
+    const res = await API({
+      endpoint: "/projects",
       method: "POST",
       body: body,
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
+      multipart: true
     });
 
-    const response = await res.json();
-    console.log(response);
     setAlert({
       message: "Proyecto creado correctamente",
       type: "success",

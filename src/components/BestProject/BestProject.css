@@ -1,77 +1,59 @@
 .best_project_wrp {
-    height: 240px;
-    opacity: 0;
-}
-
-.best_project {
-    width: 300px;
-    height: 200px;
     border-radius: var(--rtc-br-primary);
+    height: 260px;
+    width: 300px;
     overflow: hidden;
-    cursor: pointer;
-    position: relative;
     transition: all 0.5s;
+    transform-style: preserve-3d;
 }
 
-.best_project > .info {
-    height: 0px;
-    overflow: hidden;
-    transition: all 0.5s;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.51);
-    z-index: 2;
+.best_project_wrp:hover {
+    /* transform: rotateX(-10deg) rotateY(0deg) scale(1.05); */
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+.best_project_wrp>.best_project_detail {
+    height: 40%;
+    background-color: var(--rtc-color-100);
+    padding: var(--rtc-padding-xs);
+}
+
+.best_project_detail h3,
+.best_project_detail p {
+    color: var(--rtc-color-900);
+}
+
+.best_project_detail {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--rtc-gap-s);
-    width: 100%;
+    gap: var(--rtc-gap-xs);
 }
 
-.best_project > .info > h2 {
-    color: var(--rtc-text-tertiary);
-    text-transform: uppercase;
-    font-weight: 800;
-    text-align: center;
-}
-
-.best_project:hover {
-    border-radius: var(--rtc-br-primary) var(--rtc-br-primary) 0px 0px;
-}
-
-.best_project:hover > .info {
-    height: 100%;
-}
-
-.best_project:hover > .img_wrp > img {
-    filter: blur(2px);
-}
-
-.best_project > .info > div {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+.best_project_average_rating {
     display: flex;
-    gap: var(--rtc-gap-s);
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    border: 1px solid var(--rtc-color-900);
+    border-radius: 100%;
+    background-color: var(--rtc-color-100);
+    height: 45px;
+    width: 45px;
 }
 
-.best_project > .info > div > div {
-    width: 50px;
-    height: 50px;
+.best_project_average_rating > p {
+    color: var(--rtc-color-900);
 }
 
-.best_project > .info > div > div:hover ~ h3 {
-    width: 200px;
-    padding: 4px 7px;
+.best_project_detail > div {
+    display: flex;
+    gap: var(--rtc-gap-xs);
+    align-items: center;
+    justify-content: space-between;
 }
 
-.best_project > .info > div > h3 {
-    width: 0px;
-    overflow: hidden;
-    color: var(--rtc-text-tertiary);
-    transition: all 0.5s;
+.best_project_detail > div > div {
+    display: flex;
+    gap: var(--rtc-gap-xs);
+    align-items: center;
 }
