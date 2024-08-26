@@ -15,13 +15,11 @@ export const getProject = async (dispatch, id) => {
 
 export const getProjects = async (dispatch) => {
   dispatch({ type: "LOADING" });
-  setTimeout(async () => {
-    const { projects, info } = (await API({ endpoint: "/projects" })).response;
-    dispatch({
-      type: "GET_PROJECTS",
-      payload: { projects, info },
-    });
-  }, 2000);
+  const { projects, info } = (await API({ endpoint: "/projects" })).response;
+  dispatch({
+    type: "GET_PROJECTS",
+    payload: { projects, info },
+  });
 };
 
 export const changePage = async (
@@ -91,7 +89,7 @@ export const postProject = async (
       endpoint: "/projects",
       method: "POST",
       body: body,
-      multipart: true
+      multipart: true,
     });
 
     setAlert({

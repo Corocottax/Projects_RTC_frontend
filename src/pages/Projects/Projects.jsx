@@ -11,7 +11,7 @@ import {
 import Button from "../../components/Button/Button";
 import { motion } from "framer-motion";
 import Skeleton from "../../components/Skeleton/Skeleton";
-import Project from "../../components/Project/Project";
+import BestProject from "../../components/BestProject/BestProject";
 
 const Projects = () => {
   const { openned, transition } = useChangePage({ path: "/" });
@@ -24,6 +24,7 @@ const Projects = () => {
     }
   }, []);
 
+  console.log(cachedProjects);
   console.log(loadingProjects);
 
   return (
@@ -38,7 +39,7 @@ const Projects = () => {
         {loadingProjects && <Skeleton quantity={10} w="300px" h="450px" />}
         {!loadingProjects &&
           cachedProjects[info?.currentPage - 1]?.projects.map((project) => (
-            <Project key={project._id} project={project} />
+            <BestProject key={project._id} project={project} />
           ))}
       </motion.div>
       <div className="change-page">

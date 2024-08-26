@@ -4,10 +4,9 @@ import { motion } from "framer-motion";
 import ImgWrp from "../ImgWrp/ImgWrp";
 
 const BestProject = ({ project }) => {
-  console.log(project);
 
   return (
-    <Link to={`/projects/${project._id}`}>
+    <Link to={`/projects/${project._id}`} title="visitar proyecto">
       <motion.article className="best_project_wrp" animate={{ opacity: 1 }}>
         <ImgWrp w="100%" h="60%">
           <img src={project.imgs[0]} />

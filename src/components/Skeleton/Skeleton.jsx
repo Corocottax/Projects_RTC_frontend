@@ -1,16 +1,30 @@
 import "./Skeleton.css";
 import { motion } from "framer-motion";
 
-const Skeleton = ({ w = "300px", h = "200px", quantity }) => {
-  return (
-    <>
-      {Array.from({ length: quantity }, (_, i) => (
-        <motion.div
+const Skeleton = ({ quantity }) => {
+  /* <motion.div
           key={i}
           className="skeleton"
           style={{ width: w, height: h }}
           animate={{ opacity: 1 }}
-        ></motion.div>
+        ></motion.div> */
+
+  return (
+    <>
+      {Array.from({ length: quantity }, (_, i) => (
+        <motion.div className="skeleton" key={i} animate={{ opacity: 1 }}>
+          <div></div>
+          <div className="best_project_detail_skeleton">
+            <div></div>
+            <div>
+              <div>
+                <div></div>
+                <div></div>
+              </div>
+              <div className="best_project_average_rating_skeleton"></div>
+            </div>
+          </div>
+        </motion.div>
       ))}
     </>
   );
