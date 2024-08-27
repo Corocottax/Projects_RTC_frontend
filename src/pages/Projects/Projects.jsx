@@ -12,6 +12,7 @@ import Button from "../../components/Button/Button";
 import { motion } from "framer-motion";
 import Skeleton from "../../components/Skeleton/Skeleton";
 import BestProject from "../../components/BestProject/BestProject";
+import FilterProjects from "../../components/FilterProjects/FilterProjects";
 
 const Projects = () => {
   const { openned, transition } = useChangePage({ path: "/" });
@@ -24,13 +25,11 @@ const Projects = () => {
     }
   }, []);
 
-  console.log(cachedProjects);
-  console.log(loadingProjects);
-
   return (
     <div id="projects">
       <Cortinilla openned={openned} mode="dark" position="left" />
       <Arrow funct={transition} position="left" mode="dark" />
+      <FilterProjects/>
       <motion.div
         className="projects"
         animate={{ opacity: 1 }}

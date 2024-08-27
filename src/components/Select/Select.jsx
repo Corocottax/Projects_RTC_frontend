@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import "./Select.css";
-import { useFormContext } from 'react-hook-form';
+import { useFormContext } from "react-hook-form";
 
 export const SelectContext = createContext();
 
@@ -10,12 +10,15 @@ const Select = ({
   maxHeight,
   maxWidth,
   name,
-  options
+  options,
+  className,
+  defaultValue,
 }) => {
   const [openned, setOpenned] = useState(false);
   const [optionSelected, setOptionSelected] = useState();
   const { register, setValue } = useFormContext();
-  
+
+  console.log(optionSelected);
 
   useEffect(() => {
     if (optionSelected) {
@@ -25,11 +28,23 @@ const Select = ({
 
   return (
     <div
-      className={`common_select ${mode} ${openned ? "openned" : "closed"}`}
+      className={`common_select ${className} ${mode} ${
+        openned ? "openned" : "closed"
+      }`}
       onClick={() => setOpenned(!openned)}
       style={{ maxWidth: maxWidth && maxWidth }}
     >
-      <input {...register(name, options)} value={optionSelected?.text || ""} disabled/>
+      <input
+        {...register(name, options)}
+        value={
+          optionSelected?.text
+            ? optionSelected?.text
+            : defaultValue
+            ? defaultValue
+            : ""
+        }
+        disabled
+      />
       <img src={`/assets/icons/arrow-${mode}.png`} />
       <SelectContext.Provider value={{ mode, setOptionSelected }}>
         <ul
