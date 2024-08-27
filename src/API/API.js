@@ -14,8 +14,6 @@ export const API = async ({
     delete headers["Content-Type"];
   }
 
-  console.log(headers);
-
   const urlFetch = url ? url : import.meta.env.VITE_BASE_URL + endpoint;
   const bodyFetch = JSON.stringify(body); 
 
@@ -24,8 +22,6 @@ export const API = async ({
     headers,
     body: multipart ? body : bodyFetch
   });
-
-  console.log(res);
 
   const response = await res.json();
 

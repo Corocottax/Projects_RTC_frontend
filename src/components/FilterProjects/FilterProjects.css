@@ -1,13 +1,13 @@
-.filter_projects {
+.filter_projects > div {
     display: flex;
-    gap: var(--rtc-gap-s) !important;
-    justify-content: space-around !important;
-    align-items: center !important;
+    gap: var(--rtc-gap-s);
+    justify-content: space-around;
+    align-items: center;
     flex-wrap: wrap;
-    flex-direction: row !important;
+    flex-direction: row;
 }
 
- .search_by_alumn{
+ .search_by_alumn {
     border-radius: var(--rtc-br-primary);
     background-color: var(--rtc-color-200);
     gap: 0px !important;
@@ -33,4 +33,49 @@
  .search_select input {
     color: #888888 !important;
     font-size: 17px;
+    font-weight: normal !important;
  }
+
+ .search_by_alumn_wrp {
+    display: flex;
+    position: relative;
+ }
+
+ .search_by_alumn_wrp ul {
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--rtc-color-200);
+    border-radius: var(--rtc-br-secondary);
+ }
+
+ .search_by_alumn_wrp ul li {
+    border-bottom: 1px solid var(--rtc-color-300);
+    color: var(--rtc-color-800);
+    padding: var(--rtc-padding-xs);
+    cursor: pointer;
+    transition: all 0.5s;
+    filter: opacity(0.5);
+ }
+
+ .search_by_alumn_wrp ul li:hover {
+    filter: opacity(1);
+}
+
+.search_form_buttons {
+    display: flex;
+    gap: var(--rtc-gap-s);
+}
+
+.search_form_buttons > button {
+    border-radius: var(--rtc-br-secondary);
+}
+
+@media (max-width: 884px) {
+    .filter_projects {
+        max-width: 400px;
+    }
+}

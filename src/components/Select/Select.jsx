@@ -16,15 +16,20 @@ const Select = ({
 }) => {
   const [openned, setOpenned] = useState(false);
   const [optionSelected, setOptionSelected] = useState();
-  const { register, setValue } = useFormContext();
-
-  console.log(optionSelected);
+  const { register, setValue, getValues } = useFormContext();
 
   useEffect(() => {
     if (optionSelected) {
       setValue(name, optionSelected.text);
     }
   }, [optionSelected]);
+
+  useEffect(() => {
+    if (!getValues(name)) {
+      setOptionSelected();
+    }
+    console.log(getValues(name));
+  }, [getValues(name)]);
 
   return (
     <div

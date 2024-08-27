@@ -56,3 +56,10 @@ export const getRepositories = async (dispatch, user) => {
   const response = await res.json();
   dispatch({ type: "GET_REPOSITORIES", payload: response });
 };
+
+export const searchUsers = async (setUsers, input = "") => {
+  const res = await API({
+    endpoint: `/users/getbyname?name=${input}`,
+  });
+  setUsers(res.response);
+};

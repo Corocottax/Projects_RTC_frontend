@@ -13,8 +13,13 @@ export const getProject = async (dispatch, id) => {
   dispatch({ type: "GET_PROJECT", payload: response });
 };
 
-export const getProjects = async (dispatch) => {
+export const getProjects = async (dispatch, filtered) => {
   dispatch({ type: "LOADING" });
+  if (filtered) {
+    dispatch({
+      type: "CLEAN_FILTER_PROJECTS",
+    });
+  }
   const { projects, info } = (await API({ endpoint: "/projects" })).response;
   dispatch({
     type: "GET_PROJECTS",
@@ -85,7 +90,7 @@ export const postProject = async (
     body.append("imgs", data.thirdImg[0] || "");
     body.append("vote", 5);
 
-    const res = await API({
+    await API({
       endpoint: "/projects",
       method: "POST",
       body: body,
@@ -97,4 +102,27 @@ export const postProject = async (
       type: "success",
     });
   }
+};
+
+export const filterProjects = async (data, dispatch) => {
+  let name = data?.nameUser || "";
+  let rating = data?.averageRating || "";
+  let type = data?.type || "";
+
+  console.log(data);
+
+  dispatch({ type: "LOADING" });
+
+  const res = await API({
+    endpoint: `/projects/filter?name=${name}&rating=${rating}&type=${type}`,
+  });
+
+  dispatch({
+    type: "GET_FILTER_PROJECTS",
+    payload: res.response,
+  });
+};
+
+export const cleanFilters = async (dispatch, filtered) => {
+  await getProjects(dispatch, filtered);
 };

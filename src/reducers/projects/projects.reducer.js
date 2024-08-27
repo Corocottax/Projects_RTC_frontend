@@ -4,6 +4,7 @@ export const PROJECTS_INITIAL = {
   project: null,
   info: null,
   loadingProjects: false,
+  filtered: false,
 };
 
 export const projectsReducer = (state, action) => {
@@ -27,6 +28,25 @@ export const projectsReducer = (state, action) => {
       return { ...state, info: action.payload, loadingProjects: false };
     case "GET_PROJECT":
       return { ...state, project: { ...action.payload } };
+    case "GET_FILTER_PROJECTS":
+      return {
+        ...state,
+        cachedProjects: [
+          {
+            info: { ...action.payload.info },
+            projects: [...action.payload.projects],
+          },
+        ],
+        loadingProjects: false,
+        info: { ...action.payload.info },
+        filtered: true,
+      };
+    case "CLEAN_FILTER_PROJECTS":
+      return {
+        ...state,
+        cachedProjects: [],
+        filtered: false,
+      };
     case "GET_BEST_PROJECTS":
       return { ...state, best_projects: [...action.payload] };
     default:

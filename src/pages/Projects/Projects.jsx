@@ -17,11 +17,11 @@ import FilterProjects from "../../components/FilterProjects/FilterProjects";
 const Projects = () => {
   const { openned, transition } = useChangePage({ path: "/" });
   const { state, dispatch } = useContext(ProjectsContext);
-  const { cachedProjects, info, loadingProjects } = state;
+  const { cachedProjects, info, loadingProjects, filtered } = state;
 
   useEffect(() => {
     if (!cachedProjects.length) {
-      getProjects(dispatch);
+      getProjects(dispatch, filtered);
     }
   }, []);
 
@@ -52,7 +52,7 @@ const Projects = () => {
             )
           }
         >
-          Previous
+          Anterior
         </Button>
         <h3>
           {info?.currentPage} / {info?.pages}
@@ -67,7 +67,7 @@ const Projects = () => {
             )
           }
         >
-          Next
+          Siguiente
         </Button>
       </div>
     </div>
