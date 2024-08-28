@@ -8,9 +8,14 @@ export const getBestProjects = async (dispatch) => {
 };
 
 export const getProject = async (dispatch, id) => {
-  const response = (await API({ endpoint: `/projects/${id}` })).response;
+  dispatch({ type: "LOADING_PROJECT" });
+  dispatch({ type: "CLEAR_PROJECT" });
 
-  dispatch({ type: "GET_PROJECT", payload: response });
+  setTimeout(async () => {
+    const response = (await API({ endpoint: `/projects/${id}` })).response;
+
+    dispatch({ type: "GET_PROJECT", payload: response });
+  }, 100);
 };
 
 export const getProjects = async (dispatch, filtered) => {

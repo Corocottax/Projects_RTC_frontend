@@ -3,7 +3,7 @@ import "./BestProject.css";
 import { motion } from "framer-motion";
 import ImgWrp from "../ImgWrp/ImgWrp";
 
-const BestProject = ({ project }) => {
+const BestProject = ({ project, imgUser }) => {
 
   return (
     <Link to={`/projects/${project._id}`} title="visitar proyecto">
@@ -16,7 +16,7 @@ const BestProject = ({ project }) => {
           <div>
             <div>
               <ImgWrp borderRadius="100%" w="50px" h="50px">
-                <img src={project.user.avatar} />
+                <img src={imgUser ? imgUser : project.user.avatar} />
               </ImgWrp>
               <p>{project.nameUser}</p>
             </div>

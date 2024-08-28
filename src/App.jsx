@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Projects from "./pages/Projects/Projects";
 import Project from "./pages/Project/Project";
@@ -10,16 +10,19 @@ import Profile from "./pages/Profile/Profile";
 
 const App = () => {
   const { state } = useContext(UsersContext);
+  const location = useLocation();
 
   return (
     <main>
-      <Link to={state.user ? "/profile" : "/login"}>
-        <img
-          src="/assets/icons/user.png"
-          alt="user zone"
-          className="user-zone"
-        />
-      </Link>
+      {location.pathname !== "/profile" && (
+        <Link to={state.user ? "/profile" : "/login"}>
+          <img
+            src="/assets/icons/user.png"
+            alt="user zone"
+            className="user-zone"
+          />
+        </Link>
+      )}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />

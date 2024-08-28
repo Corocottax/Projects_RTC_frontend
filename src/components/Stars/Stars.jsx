@@ -15,6 +15,10 @@ const Stars = ({ averageRating, visible }) => {
         percentaje = 0;
       }
 
+      console.log(averageRating);
+      console.log(Math.floor(averageRating))
+      console.log(percentaje);
+
       arrayStars.push(
         <div
           key={i}

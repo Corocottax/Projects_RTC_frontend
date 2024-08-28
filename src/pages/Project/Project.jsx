@@ -8,11 +8,12 @@ import ImgWrp from "../../components/ImgWrp/ImgWrp";
 import Stars from "../../components/Stars/Stars";
 import { API } from "../../API/API";
 import Button from "../../components/Button/Button";
+import ProjectSkeleton from "../../components/ProjectSkeleton/ProjectSkeleton";
 
 const Project = () => {
   const { id } = useParams();
   const { state, dispatch } = useContext(ProjectsContext);
-  const { project } = state;
+  const { project, loadingProject } = state;
 
   useEffect(() => {
     getProject(dispatch, id);
@@ -30,40 +31,60 @@ const Project = () => {
 
   return (
     <div id="page_project">
-      <div className="info_user_project">
-        <ImgWrp w="100px" h="100px" borderRadius="100%">
-          <img
-            src={project?.user.avatar}
-            alt={`perfil del usuario ${project?.user.name}`}
-          />
-        </ImgWrp>
-        <h2>
-          {project?.user.name} {project?.user.lastName}
-        </h2>
-      </div>
-      <div>
-        <div className="info_project">
-          {project && <Carousel imgs={project.imgs} w="250px" h="250px" />}
-          <h3>{project?.title}</h3>
-          <p>{project?.description}</p>
-          <Stars averageRating={project?.averageRating} visible />
-        </div>
-        <div className="comments">
+      {loadingProject ? (
+        <ProjectSkeleton>
+          <div className="comments">
+            <div></div>
+            <div className="send_message">
+              <input placeholder="Escribe aquí tu comentario" />
+              <Button mode="light" disabled>
+                Enviar
+              </Button>
+            </div>
+          </div>
+        </ProjectSkeleton>
+      ) : (
+        <>
+          <div className="info_user_project">
+            <ImgWrp w="100px" h="100px" borderRadius="100%">
+              <img
+                src={project?.user.avatar}
+                alt={`perfil del usuario ${project?.user.name}`}
+              />
+            </ImgWrp>
+            <h2>
+              {project?.user.name} {project?.user.lastName}
+            </h2>
+          </div>
           <div>
-            {project?.comments.reverse().map((comment) => {
-              return (
-                <div>
-                  <p>{comment.text}</p>
-                </div>
-              );
-            })}
+            <div className="info_project">
+              {project && <Carousel imgs={project.imgs} w="250px" h="250px" />}
+              <h3>{project?.title}</h3>
+              <p>{project?.description}</p>
+              {project && (
+                <Stars averageRating={project?.averageRating} visible />
+              )}
+            </div>
+            <div className="comments">
+              <div>
+                {project?.comments.reverse().map((comment) => {
+                  return (
+                    <div>
+                      <p>{comment.text}</p>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="send_message">
+                <input placeholder="Escribe aquí tu comentario" ref={comment} />
+                <Button onClick={submit} mode="light">
+                  Enviar
+                </Button>
+              </div>
+            </div>
           </div>
-          <div className="send_message">
-            <textarea placeholder="Escribe aquí tu comentario" ref={comment} />
-            <Button onClick={submit} mode="dark">Enviar</Button>
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { logout } from "../../reducers/users/users.actions";
 import "./Profile.css";
 import { UsersContext } from "../../providers/UsersProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BestProject from "../../components/BestProject/BestProject";
 import ImgWrp from "../../components/ImgWrp/ImgWrp";
 import CreateProject from "../../components/CreateProject/CreateProject";
@@ -16,10 +16,12 @@ const Profile = () => {
   const navigate = useNavigate();
   const { user } = state;
   const [toggle, setToggle] = useState(true);
-  const [showProjects, setShowProjects] = useState(false);
 
   return (
     <div id="profile">
+      <Link to="/" className="go_back">
+        <Button mode="dark">Volver</Button>
+      </Link>
       <Button
         className="logout"
         onClick={() => logout(dispatch, navigate)}
@@ -54,33 +56,22 @@ const Profile = () => {
           </Button>
         </FlipCardBack>
       </FlipCard>
-      <Button
-        mode="dark"
-        className="button_projects"
-        onClick={() => setShowProjects(!showProjects)}
-      >
-        Mostrar mis proyectos
-      </Button>
-      <h3
-        className="title_projects"
-        style={{
-          display: showProjects ? "flex" : "none",
-          opacity: showProjects ? 1 : 0,
-        }}
-      >
-        Mis proyectos
-      </h3>
-      <div
-        className="projects"
-        style={{
-          display: showProjects ? "flex" : "none",
-          opacity: showProjects ? 1 : 0,
-        }}
-      >
-        {user?.projects.map((project) => (
-          <BestProject project={project} key={project._id} />
-        ))}
-      </div>
+      {user.projects.length > 0 ? (
+        <div>
+          <h3 className="title_projects">Mis proyectos</h3>
+          <div className="projects">
+            {user?.projects.map((project) => (
+              <BestProject
+                project={project}
+                key={project._id}
+                imgUser={user.avatar}
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <p className="none_projects">Aquí podrás ver tus proyectos cuando los subas</p>
+      )}
     </div>
   );
 };

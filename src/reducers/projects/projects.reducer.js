@@ -5,12 +5,15 @@ export const PROJECTS_INITIAL = {
   info: null,
   loadingProjects: false,
   filtered: false,
+  loadingProject: false,
 };
 
 export const projectsReducer = (state, action) => {
   switch (action.type) {
     case "LOADING":
       return { ...state, loadingProjects: true };
+    case "LOADING_PROJECT":
+      return { ...state, loadingProject: true };
     case "GET_PROJECTS":
       return {
         ...state,
@@ -27,7 +30,16 @@ export const projectsReducer = (state, action) => {
     case "GET_PREVIOUS_PROJECTS":
       return { ...state, info: action.payload, loadingProjects: false };
     case "GET_PROJECT":
-      return { ...state, project: { ...action.payload } };
+      return {
+        ...state,
+        project: { ...action.payload },
+        loadingProject: false,
+      };
+    case "CLEAR_PROJECT":
+      return {
+        ...state,
+        project: null,
+      };
     case "GET_FILTER_PROJECTS":
       return {
         ...state,

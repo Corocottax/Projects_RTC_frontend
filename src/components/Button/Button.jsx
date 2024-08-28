@@ -9,7 +9,8 @@ const Button = ({
   size = "m",
   border = false,
   loading = false,
-  type="button"
+  type="button",
+  disabled
 }) => {
   return (
     <button
@@ -17,7 +18,7 @@ const Button = ({
       className={`main_button ${className} ${mode} ${size} ${
         border ? "border" : ""
       } ${loading ? "loading" : ""}`}
-      disabled={loading}
+      disabled={loading || disabled}
       type={type}
     >
       {children}
