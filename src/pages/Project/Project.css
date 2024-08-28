@@ -32,6 +32,7 @@
     justify-content: start;
     max-width: 500px;
     height: 100%;
+    min-height: 500px;
     gap: var(--rtc-gap-s);
     position: relative;
 }
@@ -45,7 +46,7 @@
     font-size: 20px;
     text-align: center;
     line-height: 30px;
-    max-height: 25svh;
+    max-height: 120px;
     overflow-y: scroll;
 }
 
@@ -98,4 +99,18 @@
     padding-left: var(--rtc-padding-xs);
     border-radius: var(--rtc-br-primary);
     border: none;
+}
+
+@media (max-width: 1030px) {
+    #page_project > div:last-child {
+        height: auto;
+        flex-direction: column;
+        gap: var(--rtc-gap-m);
+    }
+    #page_project .comments {
+        height: 80svh;
+    }
+    #page_project .comments {
+        width: 100%;
+    }
 }

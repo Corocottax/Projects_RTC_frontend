@@ -11,11 +11,9 @@ export const getProject = async (dispatch, id) => {
   dispatch({ type: "LOADING_PROJECT" });
   dispatch({ type: "CLEAR_PROJECT" });
 
-  setTimeout(async () => {
-    const response = (await API({ endpoint: `/projects/${id}` })).response;
+  const response = (await API({ endpoint: `/projects/${id}` })).response;
 
-    dispatch({ type: "GET_PROJECT", payload: response });
-  }, 100);
+  dispatch({ type: "GET_PROJECT", payload: response });
 };
 
 export const getProjects = async (dispatch, filtered) => {
