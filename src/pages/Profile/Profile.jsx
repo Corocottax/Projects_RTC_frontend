@@ -32,7 +32,7 @@ const Profile = () => {
       <FlipCard minW="370px" w="40%" h="550px" toggle={toggle}>
         <FlipCardFront>
           <div className="info_user">
-            <ImgWrp w="250px" h="250px" borderRadius="100%">
+            <ImgWrp w="250px" h="250px" br="100%">
               <img src={user?.avatar} alt="perfil del usuario" />
             </ImgWrp>
             <h3>{user?.email}</h3>

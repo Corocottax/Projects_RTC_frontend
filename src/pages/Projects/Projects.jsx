@@ -18,6 +18,10 @@ const Projects = () => {
   const { openned, transition } = useChangePage({ path: "/" });
   const { state, dispatch } = useContext(ProjectsContext);
   const { cachedProjects, info, loadingProjects, filtered } = state;
+  const placeholderProjects = Array.from(
+    { length: 10 },
+    (_, index) => index + 1
+  );
 
   useEffect(() => {
     if (!cachedProjects.length) {
@@ -29,13 +33,14 @@ const Projects = () => {
     <div id="projects">
       <Cortinilla openned={openned} mode="dark" position="left" />
       <Arrow funct={transition} position="left" mode="dark" />
-      <FilterProjects/>
+      <FilterProjects />
       <motion.div
         className="projects"
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
       >
-        {loadingProjects && <Skeleton quantity={10} w="300px" h="450px" />}
+        {loadingProjects &&
+          placeholderProjects.map((project) => <BestProject key={project} />)}
         {!loadingProjects &&
           cachedProjects[info?.currentPage - 1]?.projects.map((project) => (
             <BestProject key={project._id} project={project} />

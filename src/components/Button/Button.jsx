@@ -9,8 +9,8 @@ const Button = ({
   size = "m",
   border = false,
   loading = false,
-  type="button",
-  disabled
+  type = "button",
+  disabled,
 }) => {
   return (
     <button
@@ -22,9 +22,7 @@ const Button = ({
       type={type}
     >
       {children}
-      {loading && (
-        <LoadingDots/>
-      )}
+      {loading && <LoadingDots />}
     </button>
   );
 };
