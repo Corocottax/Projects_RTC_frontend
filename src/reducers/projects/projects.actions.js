@@ -136,6 +136,6 @@ export const comment = async (dispatch, text, project, user) => {
     method: "POST",
     body: { text },
   });
-  
+
   dispatch({ type: "PUBLISH_COMMENT", payload: { ...response, user: user } });
 };
