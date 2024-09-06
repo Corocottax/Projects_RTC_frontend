@@ -73,6 +73,9 @@
 #page_project .comments > div > div {
     padding: var(--rtc-padding-xs);
     border-bottom: 1px solid var(--rtc-bg-secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 #page_project .comments > div > div > p {
@@ -88,13 +91,13 @@
     bottom: 0;
 }
 
-#page_project .send_message {
+#page_project .send_message form, #page_project .send_message  {
     display: flex;
     width: 100%;
     justify-content: space-around;
 }
 
-#page_project .send_message input {
+#page_project .send_message form input {
     width: 70%;
     padding-left: var(--rtc-padding-xs);
     border-radius: var(--rtc-br-primary);

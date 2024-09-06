@@ -61,6 +61,14 @@ export const projectsReducer = (state, action) => {
       };
     case "GET_BEST_PROJECTS":
       return { ...state, best_projects: [...action.payload] };
+    case "PUBLISH_COMMENT":
+      return {
+        ...state,
+        project: {
+          ...state.project,
+          comments: [...state.project.comments, { ...action.payload }],
+        },
+      };
     default:
       return { ...state };
   }

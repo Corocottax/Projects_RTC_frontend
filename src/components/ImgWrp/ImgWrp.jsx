@@ -8,6 +8,8 @@ const ImgWrp = ({ children, br = "0px", w = "0px", h = "0px" }) => {
         borderRadius: br,
         width: w,
         height: h,
+        minWidth: w,
+        minHeight: h
       }}
     >
       {children}

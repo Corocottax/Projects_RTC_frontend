@@ -129,3 +129,13 @@ export const filterProjects = async (data, dispatch) => {
 export const cleanFilters = async (dispatch, filtered) => {
   await getProjects(dispatch, filtered);
 };
+
+export const comment = async (dispatch, text, project, user) => {
+  const { response } = await API({
+    endpoint: `/comments?idProject=${project._id}`,
+    method: "POST",
+    body: { text },
+  });
+  
+  dispatch({ type: "PUBLISH_COMMENT", payload: { ...response, user: user } });
+};
