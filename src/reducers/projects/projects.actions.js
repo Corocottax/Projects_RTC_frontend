@@ -130,12 +130,36 @@ export const cleanFilters = async (dispatch, filtered) => {
   await getProjects(dispatch, filtered);
 };
 
-export const comment = async (dispatch, text, project, user) => {
+export const comment = async (
+  dispatch,
+  text,
+  project,
+  user,
+  responseMessage
+) => {
+  let endpoint = `/comments?idProject=${project._id}`;
+
+  if (responseMessage) {
+    endpoint += `&reply=${responseMessage.reply}`;
+  }
+
   const { response } = await API({
-    endpoint: `/comments?idProject=${project._id}`,
+    endpoint,
     method: "POST",
     body: { text },
   });
 
-  dispatch({ type: "PUBLISH_COMMENT", payload: { ...response, user: user } });
+  const payload = {
+    ...response,
+    user,
+  };
+
+  if (responseMessage) {
+    payload.reply = { text: responseMessage.text };
+  }
+
+  dispatch({
+    type: "PUBLISH_COMMENT",
+    payload,
+  });
 };

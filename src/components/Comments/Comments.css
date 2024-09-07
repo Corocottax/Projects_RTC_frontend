@@ -1,0 +1,201 @@
+#page_project .send_message form,
+#page_project .send_message {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    position: relative;
+}
+
+#page_project .send_message form input {
+    width: 70%;
+    padding-left: var(--rtc-padding-xs);
+    border-radius: var(--rtc-br-primary);
+    border: none;
+    outline: none;
+    background-color: #d8d8d8;
+}
+
+#page_project .send_message form input::placeholder {
+    color: var(--rtc-color-700);
+}
+
+#page_project .comments {
+    border-radius: var(--rtc-br-primary);
+    height: 94%;
+    min-width: 300px;
+    width: 40%;
+    max-width: 400px;
+    background-color: var(--rtc-color-100);
+    padding: var(--rtc-padding-xs);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 0px;
+    position: relative;
+}
+
+#page_project .comments::before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    height: 60px;
+    left: 0;
+    background-color: var(--rtc-color-300);
+    z-index: 999;
+    background: linear-gradient(to bottom, var(--rtc-color-100), rgba(255, 255, 255, 0));
+    border-radius: var(--rtc-br-primary) var(--rtc-br-primary) 0px 0px;
+}
+
+#page_project .comments>div:first-child {
+    height: 90%;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: scroll;
+    transition: all 0.5s;
+}
+
+#page_project .comments.response>div:first-child {
+    height: 85%;
+}
+
+#page_project .comments>div>div {
+    padding: var(--rtc-padding-xs);
+    display: flex;
+    align-items: end;
+    gap: 10px;
+}
+
+#page_project .comments>div>div>article {
+    padding: var(--rtc-padding-xs);
+    border-radius: var(--rtc-br-primary);
+    background-color: #d8d8d8;
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s;
+    max-width: 70%;
+}
+
+#page_project .comments>div>div>article p {
+    color: var(--rtc-text-tertiary);
+}
+
+#page_project .comments>div>div>article .reply {
+    font-size: 13px;
+    background-color: var(--rtc-color-100);
+    padding: 3px;
+    border-radius: var(--rtc-br-primary);
+    padding: var(--rtc-padding-xs);
+    margin-bottom: var(--rtc-margin-xs);
+    background-color: #b6b6b6;
+}
+
+#page_project .comments>div>div>article.right .reply {
+    background-color: #d2cebb;
+}
+
+#page_project article.left::after,
+#page_project article.right::after {
+    content: "";
+    clip-path: polygon(100% 50%, 0% 100%, 100% 100%);
+    position: absolute;
+    bottom: 0;
+    left: -12px;
+    width: 20px;
+    height: 40px;
+    background-color: #d8d8d8;
+    z-index: -1;
+}
+
+#page_project .comments>div>div>article.right {
+    background-color: #ebe6cf;
+}
+
+#page_project .comments>div>div>article:hover .options {
+    opacity: 1;
+}
+
+#page_project .comments .options {
+    width: 50px;
+    position: absolute;
+    right: -55px;
+    top: 0;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: var(--rtc-br-primary);
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+    padding: 2px;
+}
+
+#page_project .comments .options img {
+    width: 32px;
+}
+
+#page_project .comments .options button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+#page_project .comments>div>div>article.right .options {
+    right: auto;
+    left: -55px;
+}
+
+#page_project article.right::after {
+    clip-path: polygon(0 50%, 0% 100%, 100% 100%);
+    left: auto;
+    right: -12px;
+    background-color: #ebe6cf;
+}
+
+#page_project .response_message {
+    position: absolute;
+    bottom: 100%;
+    height: 30px;
+    left: 3%;
+    width: 50%;
+    border: 1px solid #d8d8d8;
+    padding: 4px;
+    border-radius: var(--rtc-br-primary) var(--rtc-br-primary) 0px 0px;
+    font-size: 12px;
+    border-bottom: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#page_project .response_message p {
+    color: var(--rtc-color-700);
+    width: 100%;
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+}
+
+#page_project .response_message img {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+#page_project .response_message img:hover {
+    filter: brightness(0);
+    border-color: black;
+}
+
+@media (max-width: 1030px) {
+    #page_project .comments {
+        height: 80svh;
+    }
+
+    #page_project .comments {
+        width: 100%;
+    }
+}

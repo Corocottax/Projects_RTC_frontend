@@ -1,40 +1,26 @@
 import { Link, useParams } from "react-router-dom";
 import "./Project.css";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ProjectsContext } from "../../providers/ProjectsProvider";
-import { comment, getProject } from "../../reducers/projects/projects.actions";
+import { getProject } from "../../reducers/projects/projects.actions";
 import Carousel from "../../components/Carousel/Carousel";
 import ImgWrp from "../../components/ImgWrp/ImgWrp";
 import Stars from "../../components/Stars/Stars";
 import Button from "../../components/Button/Button";
 import Skeleton from "../../components/Skeleton/Skeleton";
 import SkeletonProvider from "../../providers/SkeletonProvider";
-import { UsersContext } from "../../providers/UsersProvider";
-import { useForm } from "react-hook-form";
+import Comments from "../../components/Comments/Comments";
 
 const Project = () => {
   const { id } = useParams();
   const { state, dispatch } = useContext(ProjectsContext);
-  const { state: stateUser } = useContext(UsersContext);
   const { project } = state;
-  const { user } = stateUser;
-  const { register, handleSubmit, reset } = useForm();
-  const [responseMessage, setResponseMessage] = useState();
+
+  console.log(project);
 
   useEffect(() => {
     getProject(dispatch, id);
   }, []);
-
-  const submit = async ({ text }) => {
-    await comment(dispatch, text, project, user);
-    reset();
-  };
-
-  const responseToUser = (comment) => {
-    console.log(comment);
-
-    setResponseMessage(comment.text);
-  };
 
   return (
     <SkeletonProvider status={project}>
@@ -81,62 +67,7 @@ const Project = () => {
                 )}
               </Skeleton>
             </div>
-            <div className={`comments ${responseMessage && "response"}`}>
-              <div>
-                {project?.comments.toReversed().map((comment) => {
-                  return (
-                    <div
-                      key={comment?._id}
-                      style={{
-                        justifyContent:
-                          comment?.user?._id === user?._id ? "end" : "start",
-                      }}
-                    >
-                      <ImgWrp br="100%" w="30px" h="30px">
-                        <img
-                          src={comment?.user.avatar}
-                          alt={`perfil del usuario ${comment?.user.name}`}
-                          title={comment?.user.name}
-                        />
-                      </ImgWrp>
-                      <article
-                        className={
-                          comment?.user._id === user?._id ? "right" : "left"
-                        }
-                        style={{
-                          order: comment?.user._id === user?._id ? "-1" : "1",
-                        }}
-                      >
-                        {comment?.text}
-                        <div className="options">
-                          <button onClick={() => responseToUser(comment)}>
-                            <img src="/assets/icons/message.png" />
-                          </button>
-                        </div>
-                      </article>
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="send_message">
-                {!user ? (
-                  <Link to="/login">
-                    <Button>No puedes comentar sin cuenta</Button>
-                  </Link>
-                ) : (
-                  <form onSubmit={handleSubmit(submit)}>
-                    {responseMessage && <p className="response_message">{responseMessage}</p>}
-                    <input
-                      placeholder="Escribe aquí tu comentario"
-                      {...register("text")}
-                    />
-                    <Button type="submit" mode="light">
-                      Enviar
-                    </Button>
-                  </form>
-                )}
-              </div>
-            </div>
+            <Comments/>
           </div>
         </>
       </div>

@@ -5,7 +5,10 @@ const Carousel = ({ imgs = [], w, h }) => {
   const { move, animate, showCarousel } = useCarousel(imgs);
 
   return (
-    <div className="carousel" style={{ width: w, height: h }}>
+    <div
+      className="carousel"
+      style={{ width: w, height: h, maxWidth: w, maxHeight: h }}
+    >
       {imgs.map((img, index) => {
         return (
           <div
@@ -16,8 +19,8 @@ const Carousel = ({ imgs = [], w, h }) => {
               transform: `rotate(${
                 index % 2 === 0 ? index * 4.234 : index * -4.234
               }deg)`,
-              width: w,
-              height: h,
+              width: "100%",
+              height: "100%",
             }}
             onClick={() => move(index)}
           >
