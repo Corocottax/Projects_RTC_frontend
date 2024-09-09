@@ -10,9 +10,6 @@ export const useFormErrors = (errors) => {
         message: errors[Object.keys(errors)[0]].message,
         type: "error",
       });
-      setTimeout(() => {
-        setAlert();
-      }, 2500);
     } else {
       setAlert();
     }

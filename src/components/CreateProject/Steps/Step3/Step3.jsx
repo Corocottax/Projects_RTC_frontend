@@ -8,11 +8,7 @@ const Step3 = ({ register, formState, getValues }) => {
       <div>
         <InputFile
           num="1"
-          register={() =>
-            register("firstImg", {
-              required: "Mínimo tienes que subir una imagen de tu proyecto",
-            })
-          }
+          register={() => register("firstImg")}
           registerName="firstImg"
           formState={formState}
           getValues={getValues}

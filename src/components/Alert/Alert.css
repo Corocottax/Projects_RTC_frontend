@@ -39,9 +39,9 @@
     background-color: rgb(92, 92, 255);
 }
 
-.alert.show {
+/* .alert.show {
     animation: fadeIn 0.5s linear forwards, fadeOut 0.5s 2s linear forwards;
-}
+} */
 
 @keyframes fadeIn {
     0% {

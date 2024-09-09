@@ -19,10 +19,6 @@ const Step1 = ({ register }) => {
         register={() =>
           register("description", {
             required: "Debes introducir una descripción para tu proyecto",
-            minLength: {
-              value: 170,
-              message: "Escribe una descripción más larga",
-            },
           })
         }
       />

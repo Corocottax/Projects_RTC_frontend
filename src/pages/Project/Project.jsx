@@ -16,8 +16,6 @@ const Project = () => {
   const { state, dispatch } = useContext(ProjectsContext);
   const { project } = state;
 
-  console.log(project);
-
   useEffect(() => {
     getProject(dispatch, id);
   }, []);

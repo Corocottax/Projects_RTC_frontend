@@ -6,12 +6,15 @@ export const PROJECTS_INITIAL = {
   loadingProjects: false,
   filtered: false,
   loadingProject: false,
+  postProjectLoading: false
 };
 
 export const projectsReducer = (state, action) => {
   switch (action.type) {
     case "LOADING":
       return { ...state, loadingProjects: true };
+    case "TOGGLE_POST_PROJECT_LOADING":
+      return { ...state, postProjectLoading: !state.postProjectLoading };
     case "LOADING_PROJECT":
       return { ...state, loadingProject: true };
     case "GET_PROJECTS":

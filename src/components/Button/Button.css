@@ -49,9 +49,12 @@
     right: 30px;
 }
 
-.main_button.loading {
+.main_button:disabled, .main_button.loading {
     background-color: rgb(150, 150, 150);
     cursor: not-allowed;
+}
+
+.main_button.loading {
     padding-right: 70px;
     display: flex;
     align-items: center;

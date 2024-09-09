@@ -69,10 +69,29 @@ export const postProject = async (
   next,
   errors,
   step,
-  limit
+  limit,
+  dispatch,
+  navigate
 ) => {
-  console.log(step);
-  console.log(limit);
+  const { firstImg, secondImg, thirdImg } = data;
+
+  if (
+    !firstImg?.length &&
+    !secondImg?.length &&
+    !thirdImg?.length &&
+    step === 3
+  ) {
+    console.log("NO HAS PUESTO IMÁGENES");
+    
+    setAlert({
+      message: "Mínimo debes subir una imagen",
+      type: "error",
+    });
+    return;
+  }
+
+  console.log("se ejecuta la subida");
+  
 
   if (step < limit && !Object.keys(errors).length) {
     next();
@@ -93,17 +112,26 @@ export const postProject = async (
     body.append("imgs", data.thirdImg[0] || "");
     body.append("vote", 5);
 
-    await API({
+    dispatch({ type: "TOGGLE_POST_PROJECT_LOADING" });
+
+    const { response } = await API({
       endpoint: "/projects",
       method: "POST",
       body: body,
       multipart: true,
     });
 
+    dispatch({ type: "TOGGLE_POST_PROJECT_LOADING" });
+
     setAlert({
       message: "Proyecto creado correctamente",
       type: "success",
+      time: 1,
     });
+
+    setTimeout(() => {
+      navigate(`/projects/${response._id}`);
+    }, 1000);
   }
 };
 
@@ -158,8 +186,10 @@ export const comment = async (
     payload.reply = { text: responseMessage.text };
   }
 
-  dispatch({
-    type: "PUBLISH_COMMENT",
-    payload,
-  });
+  if (text) {
+    dispatch({
+      type: "PUBLISH_COMMENT",
+      payload,
+    });
+  }
 };

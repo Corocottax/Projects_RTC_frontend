@@ -11,16 +11,25 @@ import { ProjectsContext } from "../../providers/ProjectsProvider";
 const Comments = () => {
   const { state, dispatch } = useContext(ProjectsContext);
   const { state: stateUser } = useContext(UsersContext);
-  const { register, handleSubmit, reset, setFocus } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setFocus,
+    watch,
+  } = useForm();
   const [responseMessage, setResponseMessage] = useState();
   const { project } = state;
   const { user } = stateUser;
+  const [loadingComment, setLoadingComment] = useState(false);
 
   const submit = async ({ text }) => {
+    setLoadingComment(true);
     await comment(dispatch, text, project, user, responseMessage);
+    setLoadingComment(false);
     setResponseMessage();
     reset();
-  };
+  };  
 
   return (
     <div className={`comments ${responseMessage && "response"}`}>
@@ -61,7 +70,10 @@ const Comments = () => {
                       setFocus("text");
                     }}
                   >
-                    <img src="/assets/icons/message.png" />
+                    <img
+                      src="/assets/icons/message.png"
+                      alt="responder al comentario"
+                    />
                   </button>
                 </div>
               </article>
@@ -90,8 +102,14 @@ const Comments = () => {
             <input
               placeholder="Escribe aquí tu comentario"
               {...register("text")}
+              autoComplete="off"
             />
-            <Button type="submit" mode="light">
+            <Button
+              type="submit"
+              mode="light"
+              loading={loadingComment}
+              disabled={watch("text", "").trim() === ""}
+            >
               Enviar
             </Button>
           </form>

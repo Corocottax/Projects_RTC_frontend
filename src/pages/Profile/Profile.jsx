@@ -56,7 +56,7 @@ const Profile = () => {
           </Button>
         </FlipCardBack>
       </FlipCard>
-      {user.projects.length > 0 ? (
+      {/* {user?.projects.length > 0 ? (
         <div>
           <h3 className="title_projects">Mis proyectos</h3>
           <div className="projects">
@@ -71,7 +71,7 @@ const Profile = () => {
         </div>
       ) : (
         <p className="none_projects">Aquí podrás ver tus proyectos cuando los subas</p>
-      )}
+      )} */}
     </div>
   );
 };

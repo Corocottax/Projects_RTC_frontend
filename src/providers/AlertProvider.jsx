@@ -12,6 +12,7 @@ const AlertProvider = ({ children }) => {
         message={alert?.message}
         type={alert?.type}
         show={alert ? true : false}
+        time={alert?.time}
       />
       {children}
     </AlertContext.Provider>

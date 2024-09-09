@@ -12,16 +12,20 @@ import Step2 from "./Steps/Step2/Step2";
 import Step3 from "./Steps/Step3/Step3";
 import StepButtons from "../StepButtons/StepButtons";
 import { useStepper } from "../../utils/customHooks/useStepper";
+import { ProjectsContext } from "../../providers/ProjectsProvider";
+import { useNavigate } from "react-router-dom";
 
 const CreateProject = () => {
   const methods = useForm();
   const { register, handleSubmit, formState, getValues } = methods;
   const { state, dispatch } = useContext(UsersContext);
+  const { dispatch: dispatchProjects } = useContext(ProjectsContext);
   const { user, repositories } = state;
   const { errors } = formState;
   const { setAlert } = useContext(AlertContext);
   useFormErrors(errors);
   const { step, next, previous } = useStepper({ limit: 3 });
+  const navigate = useNavigate();
 
   useEffect(() => {
     getRepositories(dispatch, user);
@@ -32,9 +36,20 @@ const CreateProject = () => {
       <FormProvider {...methods}>
         <Form
           className="create_project_form"
-          handleSubmit={handleSubmit((data) =>
-            postProject(data, repositories, setAlert, next, errors, step, 3)
-          )}
+          handleSubmit={handleSubmit((data) => {
+            console.log(data);
+            postProject(
+              data,
+              repositories,
+              setAlert,
+              next,
+              errors,
+              step,
+              3,
+              dispatchProjects,
+              navigate
+            );
+          })}
         >
           <img src="/assets/rtc.webp" />
           {step === 1 && <Step1 register={register} />}

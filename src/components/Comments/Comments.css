@@ -4,6 +4,7 @@
     width: 100%;
     justify-content: space-around;
     position: relative;
+    gap: var(--rtc-gap-xs);
 }
 
 #page_project .send_message form input {

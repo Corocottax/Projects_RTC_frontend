@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import Button from "../Button/Button";
 import "./StepButtons.css";
+import { ProjectsContext } from "../../providers/ProjectsProvider";
 
 const StepButtons = ({ step, previous, limit }) => {
+
+  const { state } = useContext(ProjectsContext);
+  const { postProjectLoading } = state;
 
   return (
     <div className="step_buttons">
@@ -15,7 +20,7 @@ const StepButtons = ({ step, previous, limit }) => {
           Siguiente
         </Button>
       ) : (
-        <Button type="submit">Subir proyecto</Button>
+        <Button type="submit" loading={postProjectLoading}>Subir proyecto</Button>
       )}
     </div>
   );
