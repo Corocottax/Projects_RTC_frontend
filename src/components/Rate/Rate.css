@@ -1,0 +1,34 @@
+.rate > div {
+    display: flex;
+    height: 100svh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0;
+}
+
+.rate > div > div {
+    display: flex;
+    gap: 20px;
+}
+
+.rate h2 {
+    font-size: 30px;
+}
+
+.rate h3 {
+    font-size: 20px;
+}
+
+.starRate {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.starRate.select {
+    background-color: rgb(122, 122, 122);
+}

@@ -10,11 +10,17 @@ import Button from "../../components/Button/Button";
 import Skeleton from "../../components/Skeleton/Skeleton";
 import SkeletonProvider from "../../providers/SkeletonProvider";
 import Comments from "../../components/Comments/Comments";
+import { useModal } from "../../utils/customHooks/useModal";
+import Modal from "../../components/Modal/Modal";
+import Rate from "../../components/Rate/Rate";
+import { UsersContext } from "../../providers/UsersProvider";
 
 const Project = () => {
   const { id } = useParams();
   const { state, dispatch } = useContext(ProjectsContext);
+  const { state: stateUser } = useContext(UsersContext);
   const { project } = state;
+  const { openned, openModal, closeModal } = useModal();
 
   useEffect(() => {
     getProject(dispatch, id);
@@ -22,6 +28,9 @@ const Project = () => {
 
   return (
     <SkeletonProvider status={project}>
+      <Modal openned={openned} closeModal={closeModal}>
+        <Rate closeModal={closeModal} />
+      </Modal>
       <div id="page_project">
         <>
           <div className="info_user_project">
@@ -56,7 +65,20 @@ const Project = () => {
               <p>{project?.description}</p>
               <Skeleton w="150px" h="35px">
                 <Link to={project?.link} target="_blank">
-                  <Button mode="dark">Visitar proyecto</Button>
+                  <Button
+                    mode="dark"
+                    onClick={() => {
+                      if (
+                        !project.rating.find(
+                          (vote) => vote.user === stateUser.user._id
+                        )
+                      ) {
+                        openModal();
+                      }
+                    }}
+                  >
+                    Visitar proyecto
+                  </Button>
                 </Link>
               </Skeleton>
               <Skeleton w="500px" h="30px">
@@ -65,7 +87,7 @@ const Project = () => {
                 )}
               </Skeleton>
             </div>
-            <Comments/>
+            <Comments />
           </div>
         </>
       </div>

@@ -1,0 +1,32 @@
+.modal {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 0px;
+    background-color: var(--rtc-color-700);
+    z-index: 999999999999999999999999;
+    transition: all 0.5s;
+    overflow: hidden;
+}
+
+.modal.openned {
+    height: 100svh;
+}
+
+.modal.closed {
+    height: 0px;
+}
+
+.modal img {
+    cursor: pointer;
+    transition: all 0.5s;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    filter: brightness(1);
+}
+
+.modal img:hover {
+    transform: rotate(90deg);
+}
