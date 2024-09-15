@@ -52,8 +52,6 @@
 
 #page_project .stars {
     border-radius: var(--rtc-br-primary);
-    position: absolute;
-    bottom: 0;
 }
 
 @media (max-width: 1030px) {

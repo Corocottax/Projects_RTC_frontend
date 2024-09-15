@@ -55,7 +55,7 @@ const Project = () => {
                   <Carousel imgs={project.imgs} w="250px" h="250px" />
                 )}
               </Skeleton>
-              <Skeleton w="250px" h="40px">
+              <Skeleton w="250px" h="52px">
                 <h3>{project?.title}</h3>
               </Skeleton>
               <Skeleton w="500px" h="20px"></Skeleton>
